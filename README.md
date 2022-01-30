@@ -1,2 +1,2 @@
 # ds-project-mgmt-dashboard
-Example project management dashboard built for Dealer Spike LLC
+Example project management dashboard built for Dealer Spike LLC - for portfolio display only
