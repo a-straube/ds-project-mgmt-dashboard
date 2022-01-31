@@ -74,10 +74,49 @@ calcPhaseTotals = (card) => {
     }
 }
 
+makePhaseChart = () => {
+    const ctx = document.getElementById('phaseChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['To Do', 'Phase 1', 'Phase 2', 'Phase 3', 'QA', 'Complete'],
+            datasets: [{
+                data: [toDoCount, phaseOneCount, phaseTwoCount, phaseThreeCount, qaCount, completeCount],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
 Trello.get('boards/QCJDklm5/cards', function(cards) {
     $.each(cards, function(ix, card) {
         console.log(card);
+        calcPhaseTotals(card);
     })
+    makePhaseChart();
 }, function (error){
     console.log(error);
 });
