@@ -1,2 +1,2 @@
-# ds-project-mgmt-dashboard
-Example project management dashboard built for Dealer Spike LLC - for portfolio display only
+# trello-project-mgmt-dashboard
+Example project management dashboard utilizing Trello API
