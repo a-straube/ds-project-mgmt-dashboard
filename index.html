@@ -9,37 +9,39 @@
         <script src="index.js" async defer></script>
     </head>
     <body>
-        <div class="production-phase-chart">
-            <div class="production-phase-chart__info">
-                <h2>Production Phase</h2>
-                <ul>
-                    <li>
-                        <span>To Do</span>
-                        <span id="toDoCount">0</span>
-                    </li>
-                    <li>
-                        <span>Phase One</span>
-                        <span id="phaseOneCount">0</span>
-                    </li>
-                    <li>
-                        <span>Phase Two</span>
-                        <span id="phaseTwoCount">0</span>
-                    </li>
-                    <li>
-                        <span>Phase Three</span>
-                        <span id="phaseThreeCount">0</span>
-                    </li>
-                    <li>
-                        <span>QA</span>
-                        <span id="qaCount">0</span>
-                    </li>
-                    <li>
-                        <span>Complete</span>
-                        <span id="completeCount">0</span>
-                    </li>
-                </ul>
+        <div id="dashboardContainer">
+            <div class="production-phase-chart">
+                <div class="production-phase-chart__info">
+                    <h2>Production Phase</h2>
+                    <ul class="production-phase-chart__list">
+                        <li>
+                            <span>To Do</span>
+                            <span id="toDoCount">0</span>
+                        </li>
+                        <li>
+                            <span>Phase One</span>
+                            <span id="phaseOneCount">0</span>
+                        </li>
+                        <li>
+                            <span>Phase Two</span>
+                            <span id="phaseTwoCount">0</span>
+                        </li>
+                        <li>
+                            <span>Phase Three</span>
+                            <span id="phaseThreeCount">0</span>
+                        </li>
+                        <li>
+                            <span>QA</span>
+                            <span id="qaCount">0</span>
+                        </li>
+                        <li>
+                            <span>Complete</span>
+                            <span id="completeCount">0</span>
+                        </li>
+                    </ul>
+                </div>
+                <canvas id="productionPhaseChart" width="800" height="380"></canvas>
             </div>
-            <canvas id="phaseChart" width="400" height="400"></canvas>
         </div>
     </body>
 </html>
