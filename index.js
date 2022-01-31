@@ -21,6 +21,14 @@ const teamMembers = [
     }
 ];
 
+// Phase Totals
+let toDoCount = 0,
+    phaseOneCount = 0,
+    phaseTwoCount = 0,
+    phaseThreeCount = 0,
+    qaCount = 0,
+    completeCount = 0;
+
 // Department Totals
 let adminCount = 0,
     devCount = 0,
@@ -47,6 +55,23 @@ calcDepartmentTotals = (card) => {
             salesCount++;
         }
     });
+}
+
+calcPhaseTotals = (card) => {
+    let cardListID = card.idList;
+    if(cardListID==='5ad3c6eb79d93844dc6b0b40') {
+        toDoCount++;
+    } else if(cardListID==='61f613024aa7d53bc468757b') {
+        phaseOneCount++;
+    } else if(cardListID==='61f61307219e3e3bda928af0') {
+        phaseTwoCount++;
+    } else if(cardListID==='61f6130c6e9f198e257e8cb2') {
+        phaseThreeCount++;
+    } else if(cardListID==='5ad3c6eb79d93844dc6b0b42') {
+        qaCount++;
+    } else if(cardListID==='5ad3c6eb79d93844dc6b0b41') {
+        completeCount++;
+    }
 }
 
 Trello.get('boards/QCJDklm5/cards', function(cards) {
