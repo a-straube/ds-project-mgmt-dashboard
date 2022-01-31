@@ -21,6 +21,14 @@ const teamMembers = [
     }
 ];
 
+// Phase count HTML elements
+let elToDoCount = document.getElementById('toDoCount'),
+    elPhaseOneCount = document.getElementById('phaseOneCount'),
+    elPhaseTwoCount = document.getElementById('phaseTwoCount'),
+    elPhaseThreeCount = document.getElementById('phaseThreeCount'),
+    elQACount = document.getElementById('qaCount'),
+    elCompleteCount = document.getElementById('completeCount');
+
 // Phase Totals
 let toDoCount = 0,
     phaseOneCount = 0,
@@ -74,7 +82,17 @@ calcPhaseTotals = (card) => {
     }
 }
 
+fillProductionPhaseDataList = () => {
+    elToDoCount.innerHTML = toDoCount;
+    elPhaseOneCount.innerHTML = phaseOneCount;
+    elPhaseTwoCount.innerHTML = phaseTwoCount;
+    elPhaseThreeCount.innerHTML = phaseThreeCount;
+    elQACount.innerHTML = qaCount;
+    elCompleteCount.innerHTML = completeCount;
+}
+
 makePhaseChart = () => {
+    fillProductionPhaseDataList();
     const ctx = document.getElementById('phaseChart').getContext('2d');
     const myChart = new Chart(ctx, {
         type: 'line',
