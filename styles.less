@@ -1,3 +1,28 @@
-.progress-bar-container {
-    padding: 60px;
+#dashboardContainer {
+    @media(min-width: 1200px) {
+        margin: 0 auto;
+        width: 1170px;
+    }
+}
+
+.production-phase-chart {
+    background: url(production-phase-chart-bg.jpg) center center no-repeat;
+    display: flex;
+    justify-content: space-around;
+
+    @media(min-width: 1200px) {
+        padding: 60px 30px;
+    }
+
+    &__list {
+        background: rgb(0 53 84 / 80%);
+        border-radius: 8px;
+        color: #ffffff;
+        list-style: none;
+        padding: 20px;
+    }
+}
+
+#productionPhaseChart {
+    max-width: 800px;
 }
