@@ -13,6 +13,34 @@ const teamMembers = [
     }
 ];
 
+// Department Totals
+let adminCount = 0,
+    devCount = 0,
+    hrCount = 0,
+    itCount = 0,
+    productionCount = 0,
+    salesCount = 0;
+
+calcDepartmentTotals = (card) => {
+    let cardLabels = card.labels;
+    cardLabels.forEach(label => {
+        let department = label.name;
+        if(department==='Admin') {
+            adminCount++;
+        } else if(department==='Dev') {
+            devCount++;
+        } else if(department==='HR') {
+            hrCount++;
+        } else if(department==='IT') {
+            itCount++;
+        } else if(department==='Production') {
+            productionCount++;
+        } else if(department==='Sales') {
+            salesCount++;
+        }
+    });
+}
+
 Trello.get('boards/QCJDklm5/cards', function(cards) {
     $.each(cards, function(ix, card) {
         console.log(card);
