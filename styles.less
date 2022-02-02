@@ -6,14 +6,22 @@
     }
 }
 
+.chart-container {
+    @media(min-width: 1200px) {
+        margin: 50px 0;
+        padding: 60px 30px;
+    }
+
+    h2 {
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+}
+
 .production-phase-chart {
     background: url(production-phase-chart-bg.jpg) center center no-repeat;
     display: flex;
     justify-content: space-around;
-
-    @media(min-width: 1200px) {
-        padding: 60px 30px;
-    }
 
     &__list {
         background: #4e6f80;
@@ -26,4 +34,27 @@
 
 #productionPhaseChart {
     max-width: 800px;
+}
+
+.sprint-chart {
+    background: url(sprint-chart-bg.jpg) center center no-repeat;
+}
+
+.sprintChartList__runner-container {
+    display: flex;
+    list-style: none;
+    justify-content: flex-start;
+}
+
+.sprintChartList__runner {
+    position: relative;
+
+    &:after {
+        content: '\f70c';
+        font-family: FontAwesome;
+    }
+}
+
+.sprintChartList__runner:last-child:after {
+    content: '\f1ae';
 }
