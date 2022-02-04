@@ -19,40 +19,44 @@
         <div id="dashboardContainer">
             <div class="chart-container production-phase-chart">
                 <h2 class="chart-container__title">Production Phase</h2>
-                <div class="production-phase-chart__info">
-                    <ul class="production-phase-chart__list">
-                        <li>
-                            <span>To Do</span>
-                            <span id="toDoCount">0</span>
-                        </li>
-                        <li>
-                            <span>Phase One</span>
-                            <span id="phaseOneCount">0</span>
-                        </li>
-                        <li>
-                            <span>Phase Two</span>
-                            <span id="phaseTwoCount">0</span>
-                        </li>
-                        <li>
-                            <span>Phase Three</span>
-                            <span id="phaseThreeCount">0</span>
-                        </li>
-                        <li>
-                            <span>QA</span>
-                            <span id="qaCount">0</span>
-                        </li>
-                        <li>
-                            <span>Complete</span>
-                            <span id="completeCount">0</span>
-                        </li>
-                    </ul>
+                <div class="chart-container__content">
+                    <div class="production-phase-chart__info">
+                        <ul class="production-phase-chart__list">
+                            <li>
+                                <span>To Do</span>
+                                <span id="toDoCount">0</span>
+                            </li>
+                            <li>
+                                <span>Phase One</span>
+                                <span id="phaseOneCount">0</span>
+                            </li>
+                            <li>
+                                <span>Phase Two</span>
+                                <span id="phaseTwoCount">0</span>
+                            </li>
+                            <li>
+                                <span>Phase Three</span>
+                                <span id="phaseThreeCount">0</span>
+                            </li>
+                            <li>
+                                <span>QA</span>
+                                <span id="qaCount">0</span>
+                            </li>
+                            <li>
+                                <span>Complete</span>
+                                <span id="completeCount">0</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <canvas id="productionPhaseChart" width="800" height="380"></canvas>
                 </div>
-                <canvas id="productionPhaseChart" width="800" height="380"></canvas>
             </div>
 
             <div class="chart-container sprint-chart">
                 <h2 class="chart-container__title">Sprint Chart</h2>
-                <ul id="sprintChartList"></ul>
+                <div class="chart-container__content">
+                    <ul id="sprintChartList"></ul>
+                </div>
             </div>
         </div>
     </body>
