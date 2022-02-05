@@ -21,6 +21,8 @@ const teamMembers = [
     }
 ];
 
+let allCards = [];
+
 // Phase count HTML elements
 let elToDoCount = document.getElementById('toDoCount'),
     elPhaseOneCount = document.getElementById('phaseOneCount'),
@@ -44,6 +46,25 @@ let adminCount = 0,
     itCount = 0,
     productionCount = 0,
     salesCount = 0;
+
+addSprintChartXAxisScale = (sprintTaskCompletionTotals, sprintChartList) => {
+    const highestTaskCompletionTotal = Math.max(...sprintTaskCompletionTotals),
+        scaleHigh = highestTaskCompletionTotal+3;
+    
+    let sprintChartScaleLI = document.createElement('li'),
+        sprintChartScaleContainer = document.createElement('ul');
+
+    sprintChartScaleLI.setAttribute('class','sprintChartList__scale');
+
+    for (let i = 0; i < scaleHigh; i++) {
+        let scaleNumberLI = document.createElement('li');
+        scaleNumberLI.innerHTML = i;
+        sprintChartScaleContainer.appendChild(scaleNumberLI);
+    }
+    
+    sprintChartScaleLI.appendChild(sprintChartScaleContainer);
+    sprintChartList.insertBefore(sprintChartScaleLI, sprintChartList.firstChild);
+}
 
 calcDepartmentTotals = (card) => {
     let cardLabels = card.labels;
@@ -91,6 +112,49 @@ fillProductionPhaseDataList = () => {
     elCompleteCount.innerHTML = completeCount;
 }
 
+fillRunnerContainer = (numberOfRunners, runnerContainer) => {
+    for (let i = 0; i < numberOfRunners; i++) {
+        let runner = document.createElement('li');
+        runner.setAttribute('class','sprintChartList__runner');
+        runnerContainer.appendChild(runner);
+    }
+} 
+
+fillSprintChart = () => {
+    const sprintChartList = document.getElementById('sprintChartList');
+    let sprintTaskCompletionTotals = [];
+
+    teamMembers.forEach(member => {
+        let memberNameSpan = '<span class="sprintChartList__member-name">'+member.name+'</span>',
+            memberTrelloID = member.trello_id,
+            sprintTasksComplete = 0,
+            sprintChartLI = document.createElement('li'),
+            runnerContainer = document.createElement('ul'),
+            runner = document.createElement('li');
+            
+        sprintChartLI.setAttribute('class','sprintChartList__li');
+        sprintChartLI.innerHTML = memberNameSpan;
+        runnerContainer.setAttribute('class','sprintChartList__runner-container');
+        runner.setAttribute('class','sprintChartList__runner');
+
+        allCards.forEach(card => {
+            let cardMembers = card.idMembers;
+            cardMembers.forEach(memberID => {
+                if(memberID===memberTrelloID) {
+                    sprintTasksComplete++;
+                }
+            })
+        });
+
+        fillRunnerContainer(sprintTasksComplete, runnerContainer);
+        sprintChartLI.appendChild(runnerContainer);
+        sprintChartList.appendChild(sprintChartLI);
+        sprintTaskCompletionTotals.push(sprintTasksComplete);
+    });
+
+    addSprintChartXAxisScale(sprintTaskCompletionTotals, sprintChartList);
+}
+
 makePhaseChart = () => {
     fillProductionPhaseDataList();
     const ctx = document.getElementById('productionPhaseChart').getContext('2d');
@@ -110,10 +174,11 @@ makePhaseChart = () => {
 
 Trello.get('boards/QCJDklm5/cards', function(cards) {
     $.each(cards, function(ix, card) {
-        console.log(card);
         calcPhaseTotals(card);
+        allCards.push(card);
     })
     makePhaseChart();
+    fillSprintChart();
 }, function (error){
     console.log(error);
 });
