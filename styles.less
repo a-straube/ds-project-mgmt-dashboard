@@ -1,3 +1,9 @@
+@light-gray: #d8d8d8;
+
+html {
+    background-color: @light-gray;
+}
+
 #dashboardContainer {
     font-family: 'Red Hat Display', sans-serif;
     @media(min-width: 1200px) {
@@ -8,20 +14,29 @@
 
 .chart-container {
     @media(min-width: 1200px) {
+        box-shadow: 0 1px 26px rgb(61 69 76 / 85%);
         margin: 50px 0;
-        padding: 60px 30px;
+        padding: 60px;
     }
+}
 
-    h2 {
-        font-weight: 400;
-        text-transform: uppercase;
-    }
+.chart-container__title {
+    font-size: 50px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin: 0;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    text-shadow: 2px 3px @light-gray;
+}
+
+.chart-container__content {
+    display: flex;
+    justify-content: space-between;
 }
 
 .production-phase-chart {
     background: url(production-phase-chart-bg.jpg) center center no-repeat;
-    display: flex;
-    justify-content: space-around;
 
     &__list {
         background: #4e6f80;
@@ -40,14 +55,43 @@
     background: url(sprint-chart-bg.jpg) center center no-repeat;
 }
 
+#sprintChartList {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sprintChartList__scale {
+    ul {
+        display: flex;
+        list-style: none;
+        justify-content: space-around;
+        padding-left: 200px;
+        li {
+            position: relative;
+        }
+    }
+}
+
+.sprintChartList__li {
+    display: flex;
+}
+
+.sprintChartList__member-name {
+    font-size: 24px;
+    width: 200px;
+}
+
 .sprintChartList__runner-container {
     display: flex;
     list-style: none;
     justify-content: flex-start;
+    padding: 0;
 }
 
 .sprintChartList__runner {
     position: relative;
+    width: calc(100% / 11);
 
     &:after {
         content: '\f70c';
