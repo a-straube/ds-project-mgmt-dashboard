@@ -20,7 +20,7 @@ html {
     border: 2px solid #ffffff;
     @media(min-width: 1200px) {
         box-shadow: 0 1px 26px rgb(61 69 76 / 85%);
-        margin: 100px 0;
+        margin: 75px 0;
     }
 }
 
@@ -37,6 +37,12 @@ html {
     padding: 36px 60px;
     text-transform: uppercase;
     text-shadow: 2px 3px @light-gray;
+
+    >span {
+        display: block;
+        font-size: 35px;
+        line-height: 34px;
+    }
 }
 
 .chart-container__content {
@@ -46,6 +52,21 @@ html {
         padding: 40px 60px 60px;
     }
 }
+
+.multi-chart-row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    
+    .chart-container {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+////////////////////////////
+// Production Phase Chart //
+////////////////////////////
 
 .production-phase-chart {
     position: relative;
@@ -115,7 +136,13 @@ html {
     }
 }
 
+//////////////////
+// Sprint Chart //
+//////////////////
+
 .sprint-chart {
+    flex-grow: 2;
+    margin-right: 75px;
     position: relative;
     &:after {
         content: '';
@@ -177,4 +204,27 @@ html {
 
 .sprintChartList__runner:last-child:after {
     content: '\f1ae';
+}
+
+///////////////////////////////
+// Department Workload Chart //
+///////////////////////////////
+
+.department-workload-chart {
+    position: relative;
+    &:after {
+        content: '';
+        background-image: url(department-workload-chart-bg.jpg);
+        filter: invert(0.88);
+        height: 100%;
+            width: 100%;
+        position: absolute;
+            top: 0;
+        z-index: -1;
+    }
+}
+
+#departmentWorkloadChart {
+    max-width: 400px;
+    max-height: 270px;
 }

@@ -108,14 +108,46 @@ getDateToday = () => {
     let today = new Date();
     today = today.toLocaleDateString();
 
-    // let dateSpans = document.getElementsByClassName('date-today');
     [...document.querySelectorAll('.date-today')].forEach(dateTodaySpan => {
         dateTodaySpan.innerHTML = today
     });
-    // console.log(dateSpans);
-    // console.log(dateSpans[0].innerHTML);
-    // dateSpans[0].innerHTML = today;
-    // dateSpans[1].innerHTML = today;
+}
+
+fillDepartmentWorkloadChart = (adminCount, devCount, hrCount, itCount, productionCount, salesCount) => {
+    const ctx = document.getElementById('departmentWorkloadChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: [
+              'Admin',
+              'Dev',
+              'HR',
+              'IT',
+              'Production',
+              'Sales'
+            ],
+            datasets: [{
+              label: 'My First Dataset',
+              data: [adminCount, devCount, hrCount, itCount, productionCount, salesCount],
+              backgroundColor: [
+                'RGBA(64, 181, 116, 0.75)',
+                'RGBA(64, 185, 148, 0.75)',
+                'RGBA(64, 189, 182, 0.75)',
+                'RGBA(66, 167, 192, 0.75)',
+                'RGBA(68, 138, 194, 0.75)',
+                'RGBA(70, 109, 196, 0.75)'
+              ],
+              hoverOffset: 22
+            }]
+          },
+          options: {
+              plugins: {
+                  legend: {
+                      position: 'right'
+                  }
+              }
+          }
+    });
 }
 
 fillProductionPhaseDataList = () => {
@@ -153,12 +185,16 @@ fillSprintChart = () => {
         runner.setAttribute('class','sprintChartList__runner');
 
         allCards.forEach(card => {
-            let cardMembers = card.idMembers;
-            cardMembers.forEach(memberID => {
-                if(memberID===memberTrelloID) {
-                    sprintTasksComplete++;
-                }
-            })
+            let cardMembers = card.idMembers,
+                cardList = card.idList;
+            
+            if(cardList==='5ad3c6eb79d93844dc6b0b41') {
+                cardMembers.forEach(memberID => {
+                    if(memberID===memberTrelloID) {
+                        sprintTasksComplete++;
+                    }
+                })
+            }
         });
 
         fillRunnerContainer(sprintTasksComplete, runnerContainer);
@@ -269,8 +305,11 @@ setRunnerWidth = (scaleHigh) => {
 Trello.get('boards/QCJDklm5/cards', function(cards) {
     $.each(cards, function(ix, card) {
         calcPhaseTotals(card);
+        calcDepartmentTotals(card);
         allCards.push(card);
+        console.log(card);
     })
+    fillDepartmentWorkloadChart(adminCount, devCount, hrCount, itCount, productionCount, salesCount);
     getDateToday();
     makePhaseChart();
     fillSprintChart();

@@ -57,10 +57,19 @@
                 </div>
             </div>
 
-            <div class="chart-container sprint-chart">
-                <h2 class="chart-container__title">Sprint Chart</h2>
-                <div class="chart-container__content">
-                    <ul id="sprintChartList"></ul>
+            <div class="multi-chart-row">
+                <div class="chart-container sprint-chart">
+                    <h2 class="chart-container__title">Sprint Chart</h2>
+                    <div class="chart-container__content">
+                        <ul id="sprintChartList"></ul>
+                    </div>
+                </div>
+    
+                <div class="chart-container department-workload-chart">
+                    <h2 class="chart-container__title"><span>Department</span><span>Workload</span></h2>
+                    <div class="chart-container__content">
+                        <canvas id="departmentWorkloadChart" width="400" height="200"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
