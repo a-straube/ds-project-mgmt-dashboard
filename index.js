@@ -58,13 +58,14 @@ addSprintChartXAxisScale = (sprintTaskCompletionTotals, sprintChartList) => {
 
     for (let i = 1; i < scaleHigh; i++) {
         let scaleNumberLI = document.createElement('li');
+        scaleNumberLI.setAttribute('class','scaleLI');
         scaleNumberLI.innerHTML = i;
         sprintChartScaleContainer.appendChild(scaleNumberLI);
     }
     
     sprintChartScaleLI.appendChild(sprintChartScaleContainer);
     sprintChartList.insertBefore(sprintChartScaleLI, sprintChartList.firstChild);
-    setRunnerWidth(scaleHigh);
+    setScaleAndRunnerWidth(scaleHigh);
 }
 
 calcDepartmentTotals = (card) => {
@@ -104,6 +105,23 @@ calcPhaseTotals = (card) => {
     }
 }
 
+clearRunnerAnimations = () => {
+    let runners = document.querySelectorAll('.sprintChartList__runner--invisible');
+    let runnerContainers = document.querySelectorAll('.sprintChartList__runner-container');
+    const clearDustAndShowIcons = runners.forEach(runner => {
+        console.log('HELLO!');
+        runner.innerHTML = '';
+        runner.classList.remove('sprintChartList__runner--invisible');
+    });
+    runnerContainers.forEach(containerUL => {
+        let lis = containerUL.children,
+            lisLength = lis.length,
+            lastRunner = lis[lisLength-1];
+        console.log(lis);
+        lastRunner.classList.add('sprintChartList__runner--last');
+    })
+}
+
 getDateToday = () => {
     let today = new Date();
     today = today.toLocaleDateString();
@@ -119,34 +137,41 @@ fillDepartmentWorkloadChart = (adminCount, devCount, hrCount, itCount, productio
         type: 'doughnut',
         data: {
             labels: [
-              'Admin',
-              'Dev',
-              'HR',
-              'IT',
-              'Production',
-              'Sales'
+              ' Admin',
+              ' Dev',
+              ' HR',
+              ' IT',
+              ' Production',
+              ' Sales'
             ],
             datasets: [{
-              label: 'My First Dataset',
               data: [adminCount, devCount, hrCount, itCount, productionCount, salesCount],
               backgroundColor: [
-                'RGBA(64, 181, 116, 0.75)',
-                'RGBA(64, 185, 148, 0.75)',
-                'RGBA(64, 189, 182, 0.75)',
-                'RGBA(66, 167, 192, 0.75)',
-                'RGBA(68, 138, 194, 0.75)',
-                'RGBA(70, 109, 196, 0.75)'
+                'RGBA(64, 181, 116, 0.95)',
+                'RGBA(64, 185, 148, 0.95)',
+                'RGBA(64, 189, 182, 0.95)',
+                'RGBA(66, 167, 192, 0.95)',
+                'RGBA(68, 138, 194, 0.95)',
+                'RGBA(70, 109, 196, 0.95)'
               ],
-              hoverOffset: 22
+              borderColor: 'rgba(240,240,240,0.65)',
+              borderWidth: 1.5,
+              borderJoinStyle: 'bevel',
+              hoverBorderColor: '#ffffff',
+              hoverBorderWidth: 3
             }]
-          },
-          options: {
-              plugins: {
-                  legend: {
-                      position: 'right'
-                  }
-              }
-          }
+        },
+        options: {
+            animation: {
+                // delay: 1000,
+                duration: 4000
+            },
+            plugins: {
+                legend: {
+                    position: 'right'
+                }
+            }
+        }
     });
 }
 
@@ -161,15 +186,19 @@ fillProductionPhaseDataList = () => {
 
 fillRunnerContainer = (numberOfRunners, runnerContainer) => {
     for (let i = 0; i < numberOfRunners; i++) {
-        let runner = document.createElement('li');
-        runner.setAttribute('class','sprintChartList__runner');
+        let runner = document.createElement('li'),
+            runnerDust = document.createElement('div');
+        runner.setAttribute('class','sprintChartList__runner sprintChartList__runner--invisible');
+        runnerDust.setAttribute('class','sprintChartList__runner-dust');
+        runnerDust.innerHTML = 'o0o0o0o';
+        runner.appendChild(runnerDust);
         runnerContainer.appendChild(runner);
     }
 } 
 
+let sprintTaskCompletionTotals = [];
 fillSprintChart = () => {
     const sprintChartList = document.getElementById('sprintChartList');
-    let sprintTaskCompletionTotals = [];
 
     teamMembers.forEach(member => {
         let memberNameSpan = '<span class="sprintChartList__member-name">'+member.name+'</span>',
@@ -202,8 +231,6 @@ fillSprintChart = () => {
         sprintChartList.appendChild(sprintChartLI);
         sprintTaskCompletionTotals.push(sprintTasksComplete);
     });
-    
-    addSprintChartXAxisScale(sprintTaskCompletionTotals, sprintChartList);
 }
 
 makePhaseChart = () => {
@@ -215,29 +242,29 @@ makePhaseChart = () => {
             labels: ['To Do', 'Design', 'Phase 1', 'Phase 2', 'Phase 3', 'QA/QC', 'Complete'],
             datasets: [
                 {
-                    label: ' Filter.1',
+                    label: ' Filter A',
                     animations: {
                         y: { delay: 1000, duration: 3000 }
                     },
                     data: [toDoCount-6, 4, phaseOneCount+2, phaseTwoCount+8, phaseThreeCount, qaCount+3, completeCount-9],
-                    borderColor: '#ffa500',
-                    borderWidth: 2
+                    borderColor: '#ff0000',
+                    borderDash: [5, 5],
+                    borderWidth: 1
                 }, {
-                    label: ' Filter.2',
+                    label: ' Filter B',
                     animations: {
                         y: { delay: 500, duration: 3000 }
                     },
                     data: [toDoCount-3, 1, phaseOneCount+2, phaseTwoCount, phaseThreeCount-3, qaCount+1, completeCount-6],
-                    borderColor: '#ff0000',
-                    borderDash: [5, 5],
-                    borderWidth: 1
+                    borderColor: '#ffa500',
+                    borderWidth: 2
                 }, {
                     label: ' Main',
                     animations: {
                         y: { duration: 3000 }
                     },
                     data: [toDoCount, 0, phaseOneCount, phaseTwoCount, phaseThreeCount, qaCount, completeCount],
-                    backgroundColor: 'rgba(216,216,216,0.45)',
+                    backgroundColor: 'rgba(0,50,100,0.35)',
                     borderColor: '#d8d8d8',
                     borderWidth: 1,
                     fill: true
@@ -260,7 +287,7 @@ makePhaseChart = () => {
               tension: {
                 duration: 3000,
                 easing: 'linear',
-                from: 1.5,
+                from: 1,
                 to: 0,
                 loop: false
               }
@@ -270,7 +297,7 @@ makePhaseChart = () => {
                     position: 'right',
                     padding: {top: 0, left: 30, right: 30, bottom: 0},
                     labels: {
-                        color: '#ffffff',
+                        color: '#000000',
                         font: {
                             family: 'Red Hat Display',
                             size: 16
@@ -284,7 +311,7 @@ makePhaseChart = () => {
                         color: '#000000',
                         font: {
                             family: 'Red Hat Display',
-                            size: 16
+                            size: 18
                         }
                     }
                 },
@@ -294,12 +321,16 @@ makePhaseChart = () => {
     });
 }
 
-setRunnerWidth = (scaleHigh) => {
+setScaleAndRunnerWidth = (scaleHigh) => {
     const x = parseInt(scaleHigh);
     const runnerWidth = 100/x;
     [...document.querySelectorAll('.sprintChartList__runner')].forEach(runnerLIItem => {
         runnerLIItem.style.width = runnerWidth+'%';
     });
+    [...document.querySelectorAll('.scaleLI')].forEach(scaleLI => {
+        scaleLI.style.width = runnerWidth+'%';
+    });
+    setTimeout(clearRunnerAnimations,3000);
 }
 
 Trello.get('boards/QCJDklm5/cards', function(cards) {
@@ -309,11 +340,35 @@ Trello.get('boards/QCJDklm5/cards', function(cards) {
         allCards.push(card);
         console.log(card);
     })
-    fillDepartmentWorkloadChart(adminCount, devCount, hrCount, itCount, productionCount, salesCount);
     getDateToday();
     makePhaseChart();
     fillSprintChart();
 }, function (error){
     console.log(error);
 });
-
+    
+document.addEventListener("DOMContentLoaded", function() {
+    var lazyloadGraph = document.getElementById('chartTrigger');    
+    var lazyloadThrottleTimeout;
+    
+    function lazyload () {
+        if(lazyloadThrottleTimeout) {
+            clearTimeout(lazyloadThrottleTimeout);
+        }    
+            
+        lazyloadThrottleTimeout = setTimeout(function() {
+            var scrollTop = window.pageYOffset;
+            if(lazyloadGraph.offsetTop < (window.innerHeight + scrollTop)) {
+                addSprintChartXAxisScale(sprintTaskCompletionTotals, sprintChartList);
+                fillDepartmentWorkloadChart(adminCount, devCount, hrCount, itCount, productionCount, salesCount);
+                document.removeEventListener("scroll", lazyload);
+                window.removeEventListener("resize", lazyload);
+                window.removeEventListener("orientationChange", lazyload);
+            }
+        }, 20);
+    }
+    
+    document.addEventListener("scroll", lazyload);
+    window.addEventListener("resize", lazyload);
+    window.addEventListener("orientationChange", lazyload);
+});
