@@ -109,7 +109,6 @@ clearRunnerAnimations = () => {
     let runners = document.querySelectorAll('.sprintChartList__runner--invisible');
     let runnerContainers = document.querySelectorAll('.sprintChartList__runner-container');
     const clearDustAndShowIcons = runners.forEach(runner => {
-        console.log('HELLO!');
         runner.innerHTML = '';
         runner.classList.remove('sprintChartList__runner--invisible');
     });
@@ -343,6 +342,7 @@ Trello.get('boards/QCJDklm5/cards', function(cards) {
     getDateToday();
     makePhaseChart();
     fillSprintChart();
+    fillAccordion();
 }, function (error){
     console.log(error);
 });
@@ -372,3 +372,65 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener("resize", lazyload);
     window.addEventListener("orientationChange", lazyload);
 });
+
+////////////////////////
+// Employee Breakdown //
+////////////////////////
+
+function setAttributes(element, attributes) {
+    Object.keys(attributes).forEach(attr => {
+        let cleanedAttr = attr.split('_').join('-');
+        element.setAttribute(cleanedAttr, attributes[attr]);
+    });
+}
+
+fillAccordion = () => {
+    const eAccordion = document.getElementById('employeeBreakdownAccordion');
+
+    teamMembers.forEach((employee, i) => {
+        let employeeName = employee.name,
+            eAccordionItem = document.createElement('div'),
+            eAccordionHeader = document.createElement('h2'),
+            eAccordionBtn = document.createElement('button'),
+            eAccordionCollapse = document.createElement('div'),
+            eAccordionBody = document.createElement('div') ;
+
+        const headerAttrs = {
+            id: 'heading'+i
+        }
+
+        const btnAttrs = {
+            data_bs_toggle: 'collapse',
+            data_bs_target: '#collapse'+i,
+            aria_expanded: 'true',
+            aria_controls: 'collapse'+i
+        }
+
+        const collapseAttrs = {
+            id: 'collapse'+i,
+            aria_labeledby: 'heading'+i,
+            data_bs_parent: '#employeeBreakdownAccordion'
+        }
+
+        // Add Bootstrap accordion classes
+        eAccordionItem.setAttribute('class', 'accordion-item');
+        eAccordionHeader.setAttribute('class', 'accordion-header');
+        eAccordionBtn.classList.add('accordion-button', 'collapsed');
+        eAccordionCollapse.setAttribute('class', 'accordion-collapse');
+        eAccordionCollapse.classList.add('accordion-collapse', 'collapse')
+        eAccordionBody.setAttribute('class', 'accordion-body');
+
+        setAttributes(eAccordionHeader, headerAttrs);
+        setAttributes(eAccordionBtn, btnAttrs);
+        setAttributes(eAccordionCollapse, collapseAttrs);
+
+        eAccordionItem.append(eAccordionHeader, eAccordionCollapse);
+        eAccordionHeader.appendChild(eAccordionBtn);
+        eAccordionCollapse.appendChild(eAccordionBody);
+
+        eAccordionBtn.innerHTML = employeeName;
+        eAccordionBody.innerHTML = 'Hello!';
+
+        eAccordion.appendChild(eAccordionItem);
+    })
+}
