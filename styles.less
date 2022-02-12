@@ -365,3 +365,40 @@ html {
         z-index: -1;
     }
 }
+
+#employeeBreakdownAccordion {
+    position: relative;
+    width: 100%;
+    
+    .accordion-item {
+        background: transparent;
+    }
+
+    .accordion-header {
+        width: 30%;
+    }
+
+    .accordion-button {
+        background-color: #dad9e1;
+    }
+
+    .accordion-button:not(.collapsed) {
+        background-color: #d5e0ff;
+        box-shadow: inset 5px 5px 10px 0px rgb(222 222 253 / 75%),
+                        inset 5px -5px 10px 0px rgb(222 222 253 / 75%);
+        padding-bottom: 30px;
+    }
+
+    .accordion-button:focus {
+        box-shadow: inset 5px 5px 10px 0px rgb(222 222 253 / 75%),
+        inset 5px -5px 10px 0px rgb(222 222 253 / 75%);
+    }
+    
+    .accordion-body {
+        background-color: #d5e0ff;
+        position: absolute;
+            top: 0;
+            right: 0;
+        width: 70%;
+    }
+}

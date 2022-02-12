@@ -343,6 +343,7 @@ Trello.get('boards/QCJDklm5/cards', function(cards) {
     makePhaseChart();
     fillSprintChart();
     fillAccordion();
+    tieCardsToEmployee();
 }, function (error){
     console.log(error);
 });
@@ -389,6 +390,7 @@ fillAccordion = () => {
 
     teamMembers.forEach((employee, i) => {
         let employeeName = employee.name,
+            e_ID = employee.trello_id,
             eAccordionItem = document.createElement('div'),
             eAccordionHeader = document.createElement('h2'),
             eAccordionBtn = document.createElement('button'),
@@ -396,7 +398,8 @@ fillAccordion = () => {
             eAccordionBody = document.createElement('div') ;
 
         const headerAttrs = {
-            id: 'heading'+i
+            id: 'heading'+i,
+            class: 'accordion-header'
         }
 
         const btnAttrs = {
@@ -412,25 +415,63 @@ fillAccordion = () => {
             data_bs_parent: '#employeeBreakdownAccordion'
         }
 
+        const bodyAttrs = {
+            id: 'ab_'+e_ID,
+            class: 'accordion-body'
+        }
+
         // Add Bootstrap accordion classes
         eAccordionItem.setAttribute('class', 'accordion-item');
-        eAccordionHeader.setAttribute('class', 'accordion-header');
         eAccordionBtn.classList.add('accordion-button', 'collapsed');
-        eAccordionCollapse.setAttribute('class', 'accordion-collapse');
         eAccordionCollapse.classList.add('accordion-collapse', 'collapse')
-        eAccordionBody.setAttribute('class', 'accordion-body');
 
         setAttributes(eAccordionHeader, headerAttrs);
         setAttributes(eAccordionBtn, btnAttrs);
         setAttributes(eAccordionCollapse, collapseAttrs);
+        setAttributes(eAccordionBody, bodyAttrs);
 
         eAccordionItem.append(eAccordionHeader, eAccordionCollapse);
         eAccordionHeader.appendChild(eAccordionBtn);
         eAccordionCollapse.appendChild(eAccordionBody);
 
         eAccordionBtn.innerHTML = employeeName;
-        eAccordionBody.innerHTML = 'Hello!';
 
         eAccordion.appendChild(eAccordionItem);
+    })
+}
+
+tieCardsToEmployee = () => {
+    teamMembers.forEach(employee => {
+        const e_ID = employee.trello_id,
+            e_AccordionBodyID = 'ab_'+e_ID,
+            e_AccordionBody = document.getElementById(e_AccordionBodyID),
+            cardUL = document.createElement('ul');
+        let e_Cards = [];
+
+        allCards.forEach(card => {
+            
+            let cardData = {
+                id: card.id,
+                client: card.name,
+                members: card.idMembers,
+                phase: card.idList,
+                trello_link: card.shortUrl
+            }
+
+            cardData.members.forEach(member => {
+                if(e_ID===member) {
+                    e_Cards.push(cardData);
+                    console.log('baseball');
+                }
+            })
+        })
+
+        e_Cards.forEach(card => {
+            const cardLI = document.createElement('li');
+            cardLI.innerHTML = card.client;
+            cardUL.appendChild(cardLI);
+        })
+
+        e_AccordionBody.appendChild(cardUL);
     })
 }
