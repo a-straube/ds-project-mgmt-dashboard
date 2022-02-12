@@ -385,6 +385,96 @@ function setAttributes(element, attributes) {
     });
 }
 
+buildCardAccordion = (e_ID, e_AccordionBody) => {
+    const cardAccordion = document.createElement('div'),
+    accordionAttrs = {
+        id: 'ca_'+e_ID,
+        class: 'accordion'
+    },
+    cardPhases = [
+        {
+            name: 'To Do',
+            id: ''
+        },
+        {
+            name: 'Design',
+            id: ''
+        },
+        {
+            name: 'Phase 1',
+            id: ''
+        },
+        {
+            name: 'Phase 2',
+            id: ''
+        },
+        {
+            name: 'Phase 3',
+            id: ''
+        },
+        {
+            name: 'QA/QC',
+            id: ''
+        },
+        {
+            name: 'Complete',
+            id: ''
+        }
+    ];
+    setAttributes(cardAccordion, accordionAttrs);
+    
+    cardPhases.forEach((phase, i) => {
+        const cpAccordionItem = document.createElement('div'),
+            cpAccordionHeader = document.createElement('h2'),
+            cpAccordionBtn = document.createElement('button'),
+            cpAccordionCollapse = document.createElement('div'),
+            cpAccordionBody = document.createElement('div'),
+            
+            headerAttrs = {
+                id: 'heading' + e_ID + i,
+                class: 'accordion-header'
+            },
+            
+            btnAttrs = {
+                data_bs_toggle: 'collapse',
+                data_bs_target: '#collapse' + e_ID + i,
+                aria_expanded: 'true',
+                aria_controls: 'collapse' + e_ID + i
+            },
+            
+            collapseAttrs = {
+                id: 'collapse' + e_ID + i,
+                aria_labeledby: 'heading' + e_ID + i,
+                data_bs_parent: '#ca_' + e_ID
+            }, 
+            
+            bodyAttrs = {
+                id: 'cpab_' + e_ID + i,
+                class: 'accordion-body'
+            };
+
+        // Add Bootstrap accordion classes
+        cpAccordionItem.setAttribute('class', 'accordion-item');
+        cpAccordionBtn.classList.add('accordion-button', 'collapsed');
+        cpAccordionCollapse.classList.add('accordion-collapse', 'collapse')
+
+        setAttributes(cpAccordionHeader, headerAttrs);
+        setAttributes(cpAccordionBtn, btnAttrs);
+        setAttributes(cpAccordionCollapse, collapseAttrs);
+        setAttributes(cpAccordionBody, bodyAttrs);
+
+        cpAccordionItem.append(cpAccordionHeader, cpAccordionCollapse);
+        cpAccordionHeader.appendChild(cpAccordionBtn);
+        cpAccordionCollapse.appendChild(cpAccordionBody);
+
+        cpAccordionBtn.innerHTML = phase.name;
+
+        cardAccordion.appendChild(cpAccordionItem);
+    })
+
+    e_AccordionBody.appendChild(cardAccordion);
+}
+
 fillAccordion = () => {
     const eAccordion = document.getElementById('employeeBreakdownAccordion');
 
@@ -395,7 +485,7 @@ fillAccordion = () => {
             eAccordionHeader = document.createElement('h2'),
             eAccordionBtn = document.createElement('button'),
             eAccordionCollapse = document.createElement('div'),
-            eAccordionBody = document.createElement('div') ;
+            eAccordionBody = document.createElement('div');
 
         const headerAttrs = {
             id: 'heading'+i,
@@ -473,5 +563,6 @@ tieCardsToEmployee = () => {
         })
 
         e_AccordionBody.appendChild(cardUL);
+        buildCardAccordion(e_ID, e_AccordionBody);
     })
 }
