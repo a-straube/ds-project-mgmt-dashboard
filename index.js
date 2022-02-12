@@ -1,11 +1,3 @@
-// List IDs
-// To Do:    5ad3c6eb79d93844dc6b0b40
-// Phase 1:  61f613024aa7d53bc468757b
-// Phase 2:  61f61307219e3e3bda928af0
-// Phase 3:  61f6130c6e9f198e257e8cb2
-// QA:       5ad3c6eb79d93844dc6b0b42
-// Complete: 5ad3c6eb79d93844dc6b0b41
-
 const teamMembers = [
     {
         name: 'Marcus Aurelius',
@@ -394,7 +386,7 @@ buildCardAccordion = (e_ID, e_AccordionBody) => {
     cardPhases = [
         {
             name: 'To Do',
-            id: ''
+            id: '5ad3c6eb79d93844dc6b0b40'
         },
         {
             name: 'Design',
@@ -402,23 +394,23 @@ buildCardAccordion = (e_ID, e_AccordionBody) => {
         },
         {
             name: 'Phase 1',
-            id: ''
+            id: '61f613024aa7d53bc468757b'
         },
         {
             name: 'Phase 2',
-            id: ''
+            id: '61f61307219e3e3bda928af0'
         },
         {
             name: 'Phase 3',
-            id: ''
+            id: '61f6130c6e9f198e257e8cb2'
         },
         {
             name: 'QA/QC',
-            id: ''
+            id: '5ad3c6eb79d93844dc6b0b42'
         },
         {
             name: 'Complete',
-            id: ''
+            id: '5ad3c6eb79d93844dc6b0b41'
         }
     ];
     setAttributes(cardAccordion, accordionAttrs);
