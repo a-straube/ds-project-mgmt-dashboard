@@ -343,3 +343,21 @@ html {
     max-width: 400px;
     max-height: 270px;
 }
+
+////////////////////////
+// Employee Breakdown //
+////////////////////////
+
+.employee-breakdown {
+    position: relative;
+    &:after {
+        content: '';
+        background-image: url(chart-bg-mitchell-lou.jpg);
+        background-position: center center;
+        height: 100%;
+            width: 100%;
+        position: absolute;
+            top: 0;
+        z-index: -1;
+    }
+}
