@@ -259,7 +259,8 @@ makePhaseChart = () => {
                         y: { delay: 500, duration: 3000 }
                     },
                     data: [toDoCount-3, 1, phaseOneCount+2, phaseTwoCount, phaseThreeCount-3, qaCount+1, completeCount-6],
-                    borderColor: '#ffa500',
+                    // borderColor: '#ffa500',
+                    borderColor: '#ffca2c',
                     borderWidth: 2
                 }, {
                     label: ' Main',
@@ -535,7 +536,7 @@ fillAccordion = () => {
                                 employeeName+
                                 '</div><div class="e-info"><span>'+
                                 e_position+
-                                '</span><a href="mailto:'+
+                                '</span><a href="insert-company-internal-message-link-here"><i class="fa-solid fa-comments"></i></a><a href="mailto:'+
                                 e_email+
                                 '"><i class="fa-regular fa-envelope"></i></a><a href="tel:'+
                                 e_phone+
