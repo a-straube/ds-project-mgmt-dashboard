@@ -391,22 +391,67 @@ html {
     }
 
     .accordion-button:not(.collapsed) {
-        background-color: #d5e0ff;
-        box-shadow: inset 5px 5px 10px 0px rgb(222 222 253 / 75%),
-                        inset 5px -5px 10px 0px rgb(222 222 253 / 75%);
-        padding-bottom: 30px;
+        background-color: #f7f7f7;
+        // box-shadow: inset 5px 5px 10px 0px rgb(222 222 253 / 75%),
+        //                 inset 5px -5px 10px 0px rgb(222 222 253 / 75%);
+        padding-bottom: 65px;
     }
 
     .accordion-button:focus {
-        box-shadow: inset 5px 5px 10px 0px rgb(222 222 253 / 75%),
-        inset 5px -5px 10px 0px rgb(222 222 253 / 75%);
+        // box-shadow: inset 5px 5px 10px 0px rgb(222 222 253 / 75%),
+        // inset 5px -5px 10px 0px rgb(222 222 253 / 75%);
     }
     
     .accordion-body {
-        background-color: #d5e0ff;
+        background-color: #f7f7f7;
         position: absolute;
             top: 0;
             right: 0;
         width: 70%;
+    }
+}
+
+.e-name {
+    color: rgba(10, 40, 70, 1);
+    font-size: 25px;
+    font-weight: 700;
+    transition: all 200ms ease-in-out;
+}
+
+.collapsed {
+    .e-name {
+        color: rgba(21, 21, 21, 0.96);
+        font-size: 18px;
+        font-weight: 400;
+    }
+}
+
+.e-info {
+    background: #f7f7f7;
+    border-top: 1px solid @light-gray;
+    display: flex;
+    position: absolute;
+        bottom: 0;
+        left: 0;
+    justify-content: flex-end;
+    line-height: 30px;
+    padding: 10px 20px;
+    width: 100%;
+    >span:first-child {
+        color: #000000;
+        margin-right: auto;
+    }
+    a {
+        height: 30px;
+            width: 30px;
+        line-height: 30px;
+        margin-left: 1px;
+        text-align: center;    
+    }
+}
+
+.collapsed {
+    .e-info {
+        display: none;
     }
 }
