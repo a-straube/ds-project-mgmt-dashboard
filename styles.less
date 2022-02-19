@@ -360,6 +360,7 @@ html {
 ////////////////////////
 
 .employee-breakdown {
+    min-height: 1000px;
     position: relative;
     z-index: 0;
     &:after {
@@ -380,6 +381,11 @@ html {
     
     .accordion-item {
         background: transparent;
+        border: none;
+    }
+
+    .accordion-item:first-of-type .accordion-button {
+        border-top-right-radius: 0;
     }
 
     .accordion-header {
@@ -387,27 +393,48 @@ html {
     }
 
     .accordion-button {
-        background-color: #dad9e1;
+        background-color: rgb(218 217 225 / 40%);
+        margin: 1px 0;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            background-color: rgb(218 217 225 / 90%);
+            box-shadow: -3px 6px 6px rgba(0,10,20,0.45);
+            margin-left: 1px;
+            // margin: 5px 1px;
+        }
     }
 
     .accordion-button:not(.collapsed) {
         background-color: #f7f7f7;
+        box-shadow: -3px 8px 6px rgba(0,10,20,0.5);
         // box-shadow: inset 5px 5px 10px 0px rgb(222 222 253 / 75%),
         //                 inset 5px -5px 10px 0px rgb(222 222 253 / 75%);
-        padding-bottom: 65px;
+        margin: 10px 0;
+        padding-bottom: 80px;
+    }
+
+    >.accordion-item:first-child {
+        .accordion-button, .accordion-button:not(.collapsed) {
+            margin-top: 0;
+        }
     }
 
     .accordion-button:focus {
         // box-shadow: inset 5px 5px 10px 0px rgb(222 222 253 / 75%),
         // inset 5px -5px 10px 0px rgb(222 222 253 / 75%);
+        box-shadow: -3px 8px 6px rgba(0,10,20,0.5);
+        z-index: 1;
     }
     
     .accordion-body {
         background-color: #f7f7f7;
+        // box-shadow: -1px 0 5px rgba(0,10,20,0.9);
         position: absolute;
             top: 0;
             right: 0;
         width: 70%;
+        z-index: 2;
     }
 }
 
@@ -445,7 +472,7 @@ html {
         height: 30px;
             width: 30px;
         line-height: 30px;
-        margin-left: 1px;
+        margin-left: 2px;
         text-align: center;    
     }
 }
