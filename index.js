@@ -485,6 +485,9 @@ fillAccordion = () => {
     teamMembers.forEach((employee, i) => {
         let employeeName = employee.name,
             e_ID = employee.trello_id,
+            e_position = employee.position,
+            e_email = employee.email,
+            e_phone = employee.phone,
             eAccordionItem = document.createElement('div'),
             eAccordionHeader = document.createElement('h2'),
             eAccordionBtn = document.createElement('button'),
@@ -528,7 +531,15 @@ fillAccordion = () => {
         eAccordionHeader.appendChild(eAccordionBtn);
         eAccordionCollapse.appendChild(eAccordionBody);
 
-        eAccordionBtn.innerHTML = employeeName;
+        eAccordionBtn.innerHTML = '<div class="e-name">'+
+                                employeeName+
+                                '</div><div class="e-info"><span>'+
+                                e_position+
+                                '</span><a href="mailto:'+
+                                e_email+
+                                '"><i class="fa-regular fa-envelope"></i></a><a href="tel:'+
+                                e_phone+
+                                '"><i class="fa-solid fa-phone"></i></a></div>';
 
         eAccordion.appendChild(eAccordionItem);
     })
