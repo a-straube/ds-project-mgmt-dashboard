@@ -1,15 +1,27 @@
 const teamMembers = [
     {
         name: 'Marcus Aurelius',
-        trello_id: '61f6183fe803bd5eee4e525c'
+        trello_id: '61f6183fe803bd5eee4e525c',
+        position: 'Supervisor',
+        phone: '111-111-1111',
+        email: 'test@test.com',
+        office_status: ''
     },
     {
         name: 'Rosa Parks',
-        trello_id: '5ad3c6e888a4bb8ba338d865'
+        trello_id: '5ad3c6e888a4bb8ba338d865',
+        position: 'Development',
+        phone: '111-111-1111',
+        email: 'test@test.com',
+        office_status: ''
     },
     {
         name: 'Yogi Berra',
-        trello_id: '61f61858a589f81b521b717a'
+        trello_id: '61f61858a589f81b521b717a',
+        position: 'HR Manager',
+        phone: '111-111-1111',
+        email: 'test@test.com',
+        office_status: 'OOO.0705'
     }
 ];
 
