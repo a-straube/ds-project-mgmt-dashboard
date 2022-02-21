@@ -151,11 +151,40 @@ html {
     }
 }
 
-.production-phase-chart__goal {
+.production-phase-chart__goal-container {
     background-color: rgba(200,200,200,0.3);
-    padding: 15px;
-    .progress {
-        transform: rotate(-90deg);
+    border: 1px solid rgba(200,200,200,0.75);
+    margin-top: 30px;
+    padding: 10px 15px;
+}
+
+.production-phase-chart__goal {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    h3, span {
+        font-size: 38px;
+        margin: 0;
+        line-height: 44px;
+        text-transform: uppercase;
+    }
+}
+
+.progress {
+    border: 1px solid rgba(10,10,11,0.75);
+    margin: 5px 0;
+}
+
+.production-phase-chart__remaining {
+    display: flex;
+    justify-content: space-between;
+
+    h4, span {
+        font-size: 24px;
+        line-height: 40px;
+        margin: 0;
+        text-transform: uppercase;
     }
 }
 
