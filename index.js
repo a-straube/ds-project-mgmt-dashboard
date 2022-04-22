@@ -319,8 +319,9 @@ makePhaseChart = () => {
                     labels: {
                         color: '#000000',
                         font: {
-                            family: 'Red Hat Display',
-                            size: 16
+                            family: 'Prompt',
+                            size: 16,
+                            weight: 200
                         }
                     }
                 }
@@ -330,8 +331,9 @@ makePhaseChart = () => {
                     ticks: {
                         color: '#000000',
                         font: {
-                            family: 'Red Hat Display',
-                            size: 18
+                            family: 'Prompt',
+                            size: 18,
+                            weight: 200
                         }
                     }
                 },
