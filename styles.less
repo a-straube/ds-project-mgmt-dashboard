@@ -144,14 +144,15 @@ html {
 }
 
 .production-phase-chart__goal-container {
-    background-color: rgba(200,200,200,0.3);
+    background-color: rgba(34, 58, 66, 0.75);
     border: 1px solid rgba(200,200,200,0.75);
     margin-top: 30px;
     padding: 10px 15px;
 
     .progress {
         background-color: transparent;
-        border: 1px solid rgba(10,10,11,0.45);
+        border: 1px solid @light-gray;
+        border-radius: 7px;
         margin: 5px 0;
     }
 }
@@ -162,7 +163,8 @@ html {
     justify-content: space-between;
 
     h3, span {
-        font-size: 38px;
+        color: #ffffff;
+        font-size: 33px;
         font-weight: 200;
         margin: 0;
         line-height: 44px;
@@ -175,7 +177,9 @@ html {
     justify-content: space-between;
 
     h4, span {
+        color: #ffffff;
         font-size: 24px;
+        font-weight: 200;
         line-height: 40px;
         margin: 0;
         text-transform: uppercase;
