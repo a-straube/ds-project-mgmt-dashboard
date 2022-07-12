@@ -199,8 +199,8 @@ fillProductionPhaseDataList = () => {
     elPhaseOneCount.innerHTML = phaseOneCount;
     elPhaseTwoCount.innerHTML = phaseTwoCount;
     elPhaseThreeCount.innerHTML = phaseThreeCount;
-    elQACount.innerHTML = qaCount;
-    elCompleteCount.innerHTML = completeCount;
+    // elQACount.innerHTML = qaCount;
+    // elCompleteCount.innerHTML = completeCount;
 }
 
 fillRunnerContainer = (numberOfRunners, runnerContainer) => {
@@ -360,7 +360,6 @@ Trello.get('boards/QCJDklm5/cards', function(cards) {
         calcPhaseTotals(card);
         calcDepartmentTotals(card);
         allCards.push(card);
-        console.log(card);
     })
     getDateToday();
     makePhaseChart();
@@ -396,6 +395,25 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener("resize", lazyload);
     window.addEventListener("orientationChange", lazyload);
 });
+
+/////////////
+// Sidebar //
+/////////////
+
+let sideBar = document.querySelector('.side-bar');
+let arrowCollapse = document.querySelector('#logo-name__icon');
+let dashboardContainer = document.getElementById('dashboardContainer');
+sideBar.onclick = () => {
+    sideBar.classList.toggle('collapse');
+    arrowCollapse.classList.toggle('collapse');
+    if (arrowCollapse.classList.contains('collapse')) {
+        arrowCollapse.classList = 'fa-solid fa-angles-right collapse';
+        dashboardContainer.classList = '';
+    } else {
+        arrowCollapse.classList = 'fa-solid fa-angles-left';
+        dashboardContainer.classList = 'fullsize-dash';
+    }
+};
 
 ////////////////////////
 // Employee Breakdown //
@@ -491,6 +509,8 @@ buildCardAccordion = (e_ID, e_AccordionBody) => {
         cpAccordionCollapse.appendChild(cpAccordionBody);
 
         cpAccordionBtn.innerHTML = phase.name;
+        cpUL = document.createElement('ul');
+        cpAccordionBody.appendChild(cpUL);
 
         cardAccordion.appendChild(cpAccordionItem);
     })
@@ -569,7 +589,22 @@ tieCardsToEmployee = () => {
         const e_ID = employee.trello_id,
             e_AccordionBodyID = 'ab_'+e_ID,
             e_AccordionBody = document.getElementById(e_AccordionBodyID),
-            cardUL = document.createElement('ul');
+            cardUL = document.createElement('ul'),
+            e_ToDoListID = 'cpab_'+e_ID+'0',
+            // e_ToDoList = document.getElementById(${e_ToDoListID}),
+            asdf = e_ToDoList.querySelector('ul');
+            // e_DesignListID = 'cpab_'+e_ID+'0',
+            // e_DesignList = document.getElementById(e_DesignListID).querySelector('ul'),
+            // e_Phase1ListID = 'cpab_'+e_ID+'0',
+            // e_Phase1List = document.getElementById(e_Phase1ListID).querySelector('ul'),
+            // e_Phase2ListID = 'cpab_'+e_ID+'0',
+            // e_Phase2List = document.getElementById(e_Phase2ListID).querySelector('ul'),
+            // e_Phase3ListID = 'cpab_'+e_ID+'0',
+            // e_Phase3List = document.getElementById(e_Phase3ListID).querySelector('ul'),
+            // e_QAQCListID = 'cpab_'+e_ID+'0',
+            // e_QAQCList = document.getElementById(e_QAQCListID).querySelector('ul'),
+            // e_CompleteListID = 'cpab_'+e_ID+'0',
+            // e_CompleteList = document.getElementById(e_CompleteListID).querySelector('ul');
         let e_Cards = [];
 
         allCards.forEach(card => {
@@ -585,7 +620,6 @@ tieCardsToEmployee = () => {
             cardData.members.forEach(member => {
                 if(e_ID===member) {
                     e_Cards.push(cardData);
-                    console.log('baseball');
                 }
             })
         })
@@ -593,7 +627,21 @@ tieCardsToEmployee = () => {
         e_Cards.forEach(card => {
             const cardLI = document.createElement('li');
             cardLI.innerHTML = card.client;
-            cardUL.appendChild(cardLI);
+            // cardUL.appendChild(cardLI);
+            console.log(card.phase);
+            if(card.phase==='5ad3c6eb79d93844dc6b0b40') {
+                asdf.appendChild(cardLI);
+            } else if(card.phase==='61f613024aa7d53bc468757b') {
+                // e_Phase1List.appendChild(cardLI);
+            } else if(card.phase==='61f61307219e3e3bda928af0') {
+                // e_Phase2List.appendChild(cardLI);
+            } else if(card.phase==='61f6130c6e9f198e257e8cb2') {
+                // e_Phase3List.appendChild(cardLI);
+            } else if(card.phase==='5ad3c6eb79d93844dc6b0b42') {
+                // e_QAQCList.appendChild(cardLI);
+            } else if(card.phase==='5ad3c6eb79d93844dc6b0b41') {
+                // e_CompleteList.appendChild(cardLI);
+            }
         })
 
         e_AccordionBody.appendChild(cardUL);

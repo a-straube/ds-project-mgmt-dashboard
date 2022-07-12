@@ -1,5 +1,6 @@
 @black: #222222;
 @light-gray: #d8d8d8;
+@nav-bg: #2b2d32;
 
 @scn-sm: 780px;
 @scn-md: 900px;
@@ -10,20 +11,199 @@
     transition: all 200ms ease-in-out;
 }
 
+.side-bar-transition {
+    transition: all 0.5s ease;
+}
+
+@-webkit-keyframes swinging{
+    0%{-webkit-transform: rotate(10deg);}
+    50%{-webkit-transform: rotate(-5deg)}
+    100%{-webkit-transform: rotate(10deg);}
+}
+ 
+@keyframes swinging{
+    0%{transform: rotate(10deg);}
+    50%{transform: rotate(-5deg)}
+    100%{transform: rotate(10deg);}
+}
+
 html {
     background-color: #f7f7f7;
+}
+
+#appContainer .collapse:not(.show) {
+    display: block;
+}
+
+#sideBarToggleBtn {
+    background-color: #506e6e;
+    border: 1px solid @light-gray;
+    border-radius: 50%;
+    height: 45px;
+        width: 45px;
+    line-height: 42px;
+    margin-left: auto;
+    position: relative;
+        top: -18px;
+        right: -20px;
+    text-align: center;
+    z-index: 2;
+}
+
+.side-bar {
+    .side-bar-transition;
+    background-color: @nav-bg;
+    color: @light-gray;
+    display: flex;
+        flex-direction: column;
+    height: 100%;
+        width: 300px;
+    padding: 10px 0;
+    position: fixed;
+        top: 0;
+}
+
+.logo-name {
+    display: flex;
+    align-items: center;
+}
+
+.logo-name__name {
+    margin-left: 0.9rem;
+    white-space: nowrap;
+}
+
+#appContainer #logo-name__icon.collapse:not(.show) {
+    display: inline-block;
+}
+
+#demoProjectInfo {
+    margin-top: auto;
+    padding: 5px 15px 0;
+    width: 300px;
+
+    h4 {
+        font-size: 17px;
+        font-weight: 700;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    a {
+        font-style: italic;
+    }
+}
+
+.side-bar.collapse {
+    width: 6.4rem;
+    @media(min-width: @scn-sm) {
+        width: 100px;
+    }
+
+    #logoContainer {
+        padding: 15px;
+    }
+
+    #sampleLogo {
+        font-size: 26px;
+    }
+
+    #userInfo>div {
+        display: none;
+    }
+
+    #demoProjectInfo {
+        display: none;
+    }
+}
+
+#logoContainer {
+    background-color: #ffffff;
+    border-right: 2px solid @nav-bg;
+    padding: 30px;
+}
+
+#sampleLogo {
+    .side-bar-transition;
+    color: @black;
+    font-family: 'Londrina Sketch', cursive;
+    font-size: 88px;
+    font-weight: 700;
+    line-height: 0.9;
+    margin: 0;
+    text-align: center;
+    position: relative;
+    z-index: 0;
+
+    &:after {
+        // content: '\f25b';
+        color: #ff8c2a;
+        font-family: 'FontAwesome';
+        opacity: 1;
+        position: absolute;
+            left: 0;
+        z-index: -1;
+
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+        -webkit-animation: swinging 3.5s ease-in-out forwards infinite;
+        animation: swinging 3.5s ease-in-out forwards infinite;
+    }
+
+    >span {
+        color: @nav-bg;   
+    }
+}
+
+#userInfo {
+    border-bottom: 1px solid #ffffff;
+    color: #ffffff;
+    display: flex;
+    padding: 0 20px 30px;
+    .fa-circle-user {
+        font-size: 50px;
+    }
+    div {
+        .side-bar-transition;
+        padding-left: 15px;
+        >span {
+            font-size: 22px;
+        }
+        >p {
+            font-style: italic;
+            line-height: 1;
+            margin-bottom: 0;
+        }
+    }
+}
+
+#settingsToggle {
+    background: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 28px;
+    height: 48px;
+        width: 48px;
+    position: absolute;
+        bottom: 30px;
+        right: 30px;
 }
 
 #dashboardContainer {
     font-family: 'Prompt', sans-serif;
     font-weight: 200;
+    transition: all 0.5s ease;;
     @media(min-width: @scn-lg) {
-        margin: 0 auto;
-        width: 1170px;
+        margin-left: 300px;
+        padding: 0 75px;
     }
-    @media(min-width: @scn-xl) {
-        width: 1380px;
-    }
+}
+
+#dashboardContainer.fullsize-dash {
+    padding-left: 0;
 }
 
 .chart-container {
@@ -41,7 +221,7 @@ html {
         flex-direction: column;
         justify-content: center;
     font-size: 52px;
-    font-weight: 200;
+    font-weight: 300;
     height: 140px;
     letter-spacing: 2px;
     margin: 0;
