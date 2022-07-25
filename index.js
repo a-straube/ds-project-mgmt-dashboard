@@ -407,10 +407,10 @@ sideBar.onclick = () => {
     sideBar.classList.toggle('collapse');
     arrowCollapse.classList.toggle('collapse');
     if (arrowCollapse.classList.contains('collapse')) {
-        arrowCollapse.classList = 'fa-solid fa-angles-right collapse';
+        arrowCollapse.classList = 'fa-solid fa-angles-left collapse';
         dashboardContainer.classList = '';
     } else {
-        arrowCollapse.classList = 'fa-solid fa-angles-left';
+        arrowCollapse.classList = 'fa-solid fa-angles-right';
         dashboardContainer.classList = 'fullsize-dash';
     }
 };
