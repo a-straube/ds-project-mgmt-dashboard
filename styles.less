@@ -1,6 +1,6 @@
 @black: #222222;
 @light-gray: #d8d8d8;
-@nav-bg: #2b2d32;
+@nav-bg: #163c70;
 
 @scn-sm: 780px;
 @scn-md: 900px;
@@ -36,9 +36,10 @@ html {
 }
 
 #sideBarToggleBtn {
-    background-color: #506e6e;
-    border: 1px solid @light-gray;
+    background-color: #ffffff;
+    border: 1px solid @nav-bg;
     border-radius: 50%;
+    color: @nav-bg;
     height: 45px;
         width: 45px;
     line-height: 42px;
@@ -58,7 +59,6 @@ html {
         flex-direction: column;
     height: 100%;
         width: 300px;
-    padding: 10px 0;
     position: fixed;
         top: 0;
 }
@@ -107,11 +107,15 @@ html {
     }
 
     #sampleLogo {
-        font-size: 26px;
+        font-size: 36px;
+        >span { text-shadow: none; }
     }
 
-    #userInfo>div {
-        display: none;
+    #userInfo {
+        justify-content: center;
+        >div {
+            display: none;
+        }
     }
 
     #demoProjectInfo {
@@ -128,32 +132,19 @@ html {
 #sampleLogo {
     .side-bar-transition;
     color: @black;
-    font-family: 'Londrina Sketch', cursive;
+    font-family: 'Bangers', cursive;
     font-size: 88px;
     font-weight: 700;
     line-height: 0.9;
+    letter-spacing: .02em;
     margin: 0;
     text-align: center;
     position: relative;
     z-index: 0;
 
-    &:after {
-        // content: '\f25b';
-        color: #ff8c2a;
-        font-family: 'FontAwesome';
-        opacity: 1;
-        position: absolute;
-            left: 0;
-        z-index: -1;
-
-        -webkit-transform-origin: 50% 0;
-        transform-origin: 50% 0;
-        -webkit-animation: swinging 3.5s ease-in-out forwards infinite;
-        animation: swinging 3.5s ease-in-out forwards infinite;
-    }
-
     >span {
         color: @nav-bg;   
+        text-shadow: 2px 2px 3px @black;
     }
 }
 
@@ -161,9 +152,15 @@ html {
     border-bottom: 1px solid #ffffff;
     color: #ffffff;
     display: flex;
-    padding: 0 20px 30px;
+    padding: 30px 20px;
     .fa-circle-user {
+        background-color: #ffb631;
+        border: 3px solid #ffffff;
+        border-radius: 50%;
+        color: #6161ff;
         font-size: 50px;
+        height: 56px;
+            width: 56px;
     }
     div {
         .side-bar-transition;
