@@ -303,13 +303,6 @@ makePhaseChart = () => {
                     }
                   }
                 }
-              },
-              tension: {
-                duration: 3000,
-                easing: 'linear',
-                from: 1,
-                to: 0,
-                loop: false
               }
             },
             plugins: {
