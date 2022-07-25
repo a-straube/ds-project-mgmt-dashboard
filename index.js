@@ -182,7 +182,6 @@ fillDepartmentWorkloadChart = (adminCount, devCount, hrCount, itCount, productio
         },
         options: {
             animation: {
-                // delay: 1000,
                 duration: 4000
             },
             plugins: {
@@ -275,7 +274,6 @@ makePhaseChart = () => {
                         y: { delay: 500, duration: 3000 }
                     },
                     data: [toDoCount-3, 1, phaseOneCount+2, phaseTwoCount, phaseThreeCount-3, qaCount+1, completeCount-6],
-                    // borderColor: '#ffa500',
                     borderColor: '#ffca2c',
                     borderWidth: 2
                 }, {
