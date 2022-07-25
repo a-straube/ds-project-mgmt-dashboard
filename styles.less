@@ -27,8 +27,8 @@
     100%{transform: rotate(10deg);}
 }
 
-html {
-    background-color: #f7f7f7;
+#appContainer {
+    background-color: #dee4f7;
 }
 
 #appContainer .collapse:not(.show) {
@@ -159,7 +159,7 @@ html {
         background-color: #ffb631;
         border: 3px solid #ffffff;
         border-radius: 50%;
-        color: #6161ff;
+        color: #05058d;
         font-size: 50px;
         height: 56px;
             width: 56px;
@@ -198,7 +198,7 @@ html {
     transition: all 0.5s ease;;
     @media(min-width: @scn-lg) {
         margin-left: 300px;
-        padding: 0 75px;
+        padding: 75px;
     }
 }
 
@@ -212,6 +212,8 @@ html {
         box-shadow: 0 1px 26px rgb(61 69 76 / 85%);
         margin: 75px 0;
     }
+    &:first-child { margin-top: 0; }
+    &:last-child { margin-bottom: 0; }
 }
 
 .chart-container__title {
@@ -283,6 +285,11 @@ html {
         background: linear-gradient(180deg, #9aafb2 0%, 
         #ffffff);
     }
+}
+
+.production-phase-chart__info {
+    flex-grow: 1;
+    padding-right: 75px;
 }
 
 .production-phase-chart__list {
@@ -375,6 +382,7 @@ html {
     max-width: 800px;
     padding: 36px 17px 21px 28px;
     @media(min-width: @scn-xl) {
+        max-height: 520px;
         max-width: 1000px;
     }
 }
