@@ -179,7 +179,10 @@
     }
 }
 
-#dashboardContainer.fullsize-dash { padding-left: 0; }
+#dashboardContainer.fullsize-dash {
+    padding-left: 0;
+    @media(min-width: @scn-lg) { margin-left: 220px; }
+}
 
 .chart-container {
     border: 2px solid #ffffff;
