@@ -163,15 +163,18 @@ fillDepartmentWorkloadChart = (adminCount, devCount, hrCount, itCount, productio
               ' Production',
               ' Sales'
             ],
+            font: {
+                size: 22
+            },
             datasets: [{
               data: [adminCount, devCount, hrCount, itCount, productionCount, salesCount],
               backgroundColor: [
-                'RGBA(64, 181, 116, 0.95)',
-                'RGBA(64, 185, 148, 0.95)',
-                'RGBA(64, 189, 182, 0.95)',
-                'RGBA(66, 167, 192, 0.95)',
-                'RGBA(68, 138, 194, 0.95)',
-                'RGBA(70, 109, 196, 0.95)'
+                'RGBA(64, 181, 116, 1)',
+                'RGBA(64, 185, 148, 1)',
+                'RGBA(64, 189, 182, 1)',
+                'RGBA(66, 167, 192, 1)',
+                'RGBA(68, 138, 194, 1)',
+                'RGBA(70, 109, 196, 1)'
               ],
               borderColor: 'rgba(240,240,240,0.65)',
               borderWidth: 1.5,
@@ -186,7 +189,10 @@ fillDepartmentWorkloadChart = (adminCount, devCount, hrCount, itCount, productio
             },
             plugins: {
                 legend: {
-                    position: 'right'
+                    position: 'right',
+                    font: {
+                        size: 20
+                    }
                 }
             }
         }

@@ -498,16 +498,24 @@
         z-index: -1;
     }
 
+    .chart-container__title { background: linear-gradient(180deg, #dacaa9 0%, #ffffff); }
+    
     .chart-container__content {
         @media(min-width: @scn-lg) { padding: 60px; }
     }
 
-    .chart-container__title { background: linear-gradient(180deg, #dacaa9 0%, #ffffff); }
+    .fa-spinner {
+        font-size: 228px;
+        position: absolute;
+            top: 80px;
+            left: 80px;
+        z-index: 0;
+    }
 
     .chart-container__content:after {
         content: '';
         background-color: rgba(200, 200, 200, 75%);
-        border: 1px solid #ffffff;
+        border: 1px solid #bfbfbf;
         border-radius: 50%;
         box-shadow: 0 0 15px #727272;
         height: 320px;
