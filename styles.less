@@ -1,6 +1,6 @@
 @black: #222222;
 @light-gray: #d8d8d8;
-@nav-bg: #0e284c;
+@nav-bg: #0f293a;
 
 @scn-sm: 780px;
 @scn-md: 900px;
@@ -23,7 +23,7 @@
     100%{transform: rotate(10deg);}
 }
 
-#appContainer { background-color: #dee4f7; }
+#appContainer { background-color: #fbfbfb; }
 
 #appContainer .collapse:not(.show) { display: block; }
 
@@ -92,7 +92,7 @@
 
     #sampleLogo {
         font-size: 36px;
-        >span { text-shadow: none; }
+        text-shadow: none;
     }
 
     #userInfo {
@@ -105,7 +105,7 @@
 
 #logoContainer {
     background-color: #ffffff;
-    border-right: 2px solid @nav-bg;
+    border-right: 3px solid @nav-bg;
     padding: 30px;
 }
 
@@ -123,8 +123,7 @@
     z-index: 0;
 
     >span {
-        color: @nav-bg;   
-        text-shadow: 2px 2px 3px @black;
+        color: @nav-bg;
     }
 }
 
@@ -188,8 +187,8 @@
 .chart-container {
     border: 2px solid #ffffff;
     @media(min-width: @scn-lg) {
-        box-shadow: 0 1px 26px rgb(61 69 76 / 85%);
-        margin: 75px 0;
+        box-shadow: 0 1px 16px rgb(61 69 76 / 65%);
+        margin: 65px 0;
     }
     &:first-child { margin-top: 0; }
     &:last-child { margin-bottom: 0; }
@@ -203,7 +202,7 @@
         justify-content: center;
     font-size: 52px;
     font-weight: 300;
-    height: 140px;
+    height: 120px;
     letter-spacing: 2px;
     margin: 0;
     padding: 0 60px;
@@ -222,7 +221,7 @@
     display: flex;
     justify-content: space-between;
     position: relative;
-    @media(min-width: @scn-lg) { padding: 40px 60px 60px; }
+    @media(min-width: @scn-lg) { padding: 40px 60px; }
 }
 
 .multi-chart-row {
@@ -243,7 +242,6 @@
 .production-phase-chart {
     position: relative;
     z-index: 0;
-    @media(min-width: @scn-xl) { min-height: 840px; }
 
     &:after {
         content: '';
@@ -342,8 +340,8 @@
     max-width: 800px;
     padding: 36px 17px 21px 28px;
     @media(min-width: @scn-xl) {
-        max-height: 520px;
-        max-width: 1000px;
+        max-height: 400px;
+        max-width: 950px;
     }
 }
 
