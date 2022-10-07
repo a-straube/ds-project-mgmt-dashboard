@@ -88,11 +88,19 @@
     width: 6.4rem;
     @media(min-width: @scn-sm) { width: 100px; }
 
-    #logoContainer { padding: 15px; }
-
-    #sampleLogo {
-        font-size: 36px;
-        text-shadow: none;
+    #logoContainer {
+        padding: 15px 2px;
+        img {
+            width: 0px;
+        }
+    }
+    
+    #logo {
+        background: url(placeholder-logo.jpg) 0 0 no-repeat;
+        background-size: cover;
+        height: 80px;
+            width: 66px;
+        margin: 0 auto;
     }
 
     #userInfo {
@@ -107,23 +115,10 @@
     background-color: #ffffff;
     border-right: 3px solid @nav-bg;
     padding: 30px;
-}
 
-#sampleLogo {
-    .side-bar-transition;
-    color: @black;
-    font-family: 'Bangers', cursive;
-    font-size: 88px;
-    font-weight: 700;
-    line-height: 0.9;
-    letter-spacing: .02em;
-    margin: 0;
-    text-align: center;
-    position: relative;
-    z-index: 0;
-
-    >span {
-        color: @nav-bg;
+    img {
+        .side-bar-transition;
+        width: 234px;
     }
 }
 
