@@ -87,20 +87,10 @@
 .side-bar.collapse {
     width: 6.4rem;
     @media(min-width: @scn-sm) { width: 100px; }
-
-    #logoContainer {
-        padding: 15px 2px;
-        img {
-            width: 0px;
-        }
-    }
     
     #logo {
-        background: url(placeholder-logo.jpg) 0 0 no-repeat;
-        background-size: cover;
-        height: 80px;
-            width: 66px;
-        margin: 0 auto;
+        margin-left: 5px;
+        width: 56px;
     }
 
     #userInfo {
@@ -114,12 +104,18 @@
 #logoContainer {
     background-color: #ffffff;
     border-right: 3px solid @nav-bg;
-    padding: 30px;
+    overflow: hidden;
+    padding: 25px 15px;
+}
 
-    img {
-        .side-bar-transition;
-        width: 234px;
-    }
+#logo {
+    background: url(placeholder-logo.png) 0 0 no-repeat;
+    background-size: cover;
+    filter: invert(.4) sepia(.5) hue-rotate(163deg) saturate(600%);
+    height: 57px;
+        width: 267px;
+    margin-left: 0px;
+    transition: margin-left 0.5s ease;
 }
 
 #userInfo {
