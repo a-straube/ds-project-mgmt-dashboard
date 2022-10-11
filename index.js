@@ -136,7 +136,6 @@ clearRunnerAnimations = () => {
         let lis = containerUL.children,
             lisLength = lis.length,
             lastRunner = lis[lisLength-1];
-        console.log(lis);
         lastRunner.classList.add('sprintChartList__runner--last');
     })
 }
@@ -625,7 +624,6 @@ tieCardsToEmployee = () => {
             const cardLI = document.createElement('li');
             cardLI.innerHTML = card.client;
             // cardUL.appendChild(cardLI);
-            console.log(card.phase);
             if(card.phase==='5ad3c6eb79d93844dc6b0b40') {
                 asdf.appendChild(cardLI);
             } else if(card.phase==='61f613024aa7d53bc468757b') {
