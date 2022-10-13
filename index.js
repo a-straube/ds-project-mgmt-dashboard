@@ -585,10 +585,10 @@ tieCardsToEmployee = () => {
         const e_ID = employee.trello_id,
             e_AccordionBodyID = 'ab_'+e_ID,
             e_AccordionBody = document.getElementById(e_AccordionBodyID),
-            cardUL = document.createElement('ul'),
-            e_ToDoListID = 'cpab_'+e_ID+'0',
+            cardUL = document.createElement('ul');
+            // e_ToDoListID = 'cpab_'+e_ID+'0',
             // e_ToDoList = document.getElementById(${e_ToDoListID}),
-            asdf = e_ToDoList.querySelector('ul');
+            // asdf = e_ToDoList.querySelector('ul'),
             // e_DesignListID = 'cpab_'+e_ID+'0',
             // e_DesignList = document.getElementById(e_DesignListID).querySelector('ul'),
             // e_Phase1ListID = 'cpab_'+e_ID+'0',
@@ -625,7 +625,7 @@ tieCardsToEmployee = () => {
             cardLI.innerHTML = card.client;
             // cardUL.appendChild(cardLI);
             if(card.phase==='5ad3c6eb79d93844dc6b0b40') {
-                asdf.appendChild(cardLI);
+                // asdf.appendChild(cardLI);
             } else if(card.phase==='61f613024aa7d53bc468757b') {
                 // e_Phase1List.appendChild(cardLI);
             } else if(card.phase==='61f61307219e3e3bda928af0') {
