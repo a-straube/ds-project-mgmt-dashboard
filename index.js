@@ -136,7 +136,9 @@ clearRunnerAnimations = () => {
         let lis = containerUL.children,
             lisLength = lis.length,
             lastRunner = lis[lisLength-1];
-        lastRunner.classList.add('sprintChartList__runner--last');
+        if(lastRunner) {
+            lastRunner.classList.add('sprintChartList__runner--last');
+        }
     })
 }
 
