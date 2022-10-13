@@ -128,7 +128,7 @@ calcPhaseTotals = (card) => {
 clearRunnerAnimations = () => {
     let runners = document.querySelectorAll('.sprintChartList__runner--invisible');
     let runnerContainers = document.querySelectorAll('.sprintChartList__runner-container');
-    const clearDustAndShowIcons = runners.forEach(runner => {
+    runners.forEach(runner => {
         runner.innerHTML = '';
         runner.classList.remove('sprintChartList__runner--invisible');
     });
