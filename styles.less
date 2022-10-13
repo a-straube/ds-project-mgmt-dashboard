@@ -120,6 +120,7 @@
 #logoContainer {
     background-color: #e7e7e7;
     border-right: 3px solid @nav-bg;
+    height: 107px;
     overflow: hidden;
     padding: 25px 15px;
 }
@@ -177,7 +178,12 @@
 }
 
 .side-bar__section {
+    overflow: hidden;
     padding: 0 37px 10px;
+
+    &--tools-used {
+        max-height: 300px;
+    }
 }
 
 h2.side-bar__section-header {
