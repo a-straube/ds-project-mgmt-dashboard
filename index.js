@@ -207,6 +207,7 @@ fillProductionPhaseDataList = () => {
     elPhaseThreeCount.innerHTML = phaseThreeCount;
     // elQACount.innerHTML = qaCount;
     // elCompleteCount.innerHTML = completeCount;
+    fillGoalBar();
 }
 
 fillRunnerContainer = (numberOfRunners, runnerContainer) => {
@@ -256,6 +257,17 @@ fillSprintChart = () => {
         sprintChartList.appendChild(sprintChartLI);
         sprintTaskCompletionTotals.push(sprintTasksComplete);
     });
+}
+
+fillGoalBar = () => {
+    const remainingToGoal = document.getElementById('remainingToGoal');
+    const progressGoalBar = document.getElementById('progressGoalBar');
+    let goal = document.getElementById('goal').innerText;
+    let remaining = goal-completeCount;
+    let completePercentage = (completeCount/goal)*100;
+
+    remainingToGoal.innerHTML = remaining;
+    progressGoalBar.setAttribute('style', 'width: '+completePercentage+'%');
 }
 
 makePhaseChart = () => {
