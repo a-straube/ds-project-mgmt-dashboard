@@ -205,8 +205,8 @@ fillProductionPhaseDataList = () => {
     elPhaseOneCount.innerHTML = phaseOneCount;
     elPhaseTwoCount.innerHTML = phaseTwoCount;
     elPhaseThreeCount.innerHTML = phaseThreeCount;
-    // elQACount.innerHTML = qaCount;
-    // elCompleteCount.innerHTML = completeCount;
+    elQACount.innerHTML = qaCount;
+    elCompleteCount.innerHTML = completeCount;
     fillGoalBar();
 }
 
@@ -262,12 +262,17 @@ fillSprintChart = () => {
 fillGoalBar = () => {
     const remainingToGoal = document.getElementById('remainingToGoal');
     const progressGoalBar = document.getElementById('progressGoalBar');
+    const inProgressBar = document.getElementById('inProgressBar');
+    let totalCards = allCards.length;
+    let inProgressCount = totalCards-completeCount-toDoCount;
     let goal = document.getElementById('goal').innerText;
     let remaining = goal-completeCount;
-    let completePercentage = (completeCount/goal)*100;
+    let completePercentage = (completeCount/totalCards)*100;
+    let inProgressPercentage = (inProgressCount/totalCards)*100;
 
     remainingToGoal.innerHTML = remaining;
     progressGoalBar.setAttribute('style', 'width: '+completePercentage+'%');
+    inProgressBar.setAttribute('style', 'width: '+inProgressPercentage+'%');
 }
 
 makePhaseChart = () => {

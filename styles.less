@@ -330,46 +330,65 @@ h2.side-bar__section-header {
     background-color: rgba(34, 58, 66, 0.75);
     border: 1px solid rgba(200,200,200,0.75);
     margin-top: 30px;
-    padding: 10px 15px;
+    padding: 20px;
 
     .progress {
-        background-color: transparent;
-        border: 1px solid @light-gray;
-        border-radius: 7px;
-        margin: 5px 0;
+        border-radius: 0;
+        // font-size: .85rem;
+        height: 32px;
+        margin-bottom: 5px;
+
+        .progress-bar {
+            color: #ffffff;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-shadow: 0 0 4px @black;
+            text-transform: uppercase;
+        }
     }
 }
 
 #progressGoalBar {
-    transition: 3s ease-in;
+    transition: 3s ease;
 }
 
-.production-phase-chart__goal {
+.production-phase-chart__goal-text {
+    background-color: #f9f8ee;
     display: flex;
+    font-weight: 200;
+    height: 50px;
     align-items: flex-end;
     justify-content: space-between;
-
-    h3, span {
-        color: #ffffff;
-        font-size: 33px;
-        font-weight: 200;
-        margin: 0;
-        line-height: 44px;
-        text-transform: uppercase;
+    padding-left: 15px;
+    text-transform: uppercase;
+    
+    span {
+        font-weight: 700;
     }
 }
 
-.production-phase-chart__remaining {
-    display: flex;
-    justify-content: space-between;
+.production-phase-chart__goal {
+    font-size: 32px;
+    line-height: 48px;
+}
 
-    h4, span {
-        color: #ffffff;
-        font-size: 24px;
-        font-weight: 200;
-        line-height: 40px;
-        margin: 0;
-        text-transform: uppercase;
+.production-phase-chart__remaining {
+    background-color: #94a5b2;
+    font-size: 23px;
+    line-height: 52px;
+    height: 100%;   
+    padding: 0 15px 0 10px;
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: -20px;
+        width: 0;
+        height: 0;
+        border-bottom: 50px solid #94a5b2;
+        border-left: 20px solid transparent;
     }
 }
 
