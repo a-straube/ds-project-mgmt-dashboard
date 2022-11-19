@@ -418,10 +418,12 @@ document.addEventListener("DOMContentLoaded", function() {
 // Sidebar //
 /////////////
 
+const appContainer = document.getElementById('appContainer');
 let sideBar = document.querySelector('.side-bar');
 let arrowCollapse = document.querySelector('#logo-name__icon');
 let dashboardContainer = document.getElementById('dashboardContainer');
 sideBar.onclick = () => {
+    appContainer.classList.toggle('side-bar-open');
     sideBar.classList.toggle('collapse');
     arrowCollapse.classList.toggle('collapse');
     if (arrowCollapse.classList.contains('collapse')) {
