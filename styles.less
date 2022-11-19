@@ -59,7 +59,14 @@
         top: -18px;
         right: -20px;
     text-align: center;
+    transition: all 150ms ease-in-out;
     z-index: 2;
+
+    &:hover {
+        background-color: #44aaf5;
+        font-size: 20px;
+        right: -22px;
+    }
 }
 
 .side-bar {
@@ -198,10 +205,10 @@
 
 h2.side-bar__section-header {
     display: flex;
+    align-items: center;
     .fa-solid { font-size: 24px; }
     span {
-        font-size: 17px;
-        font-weight: 700;
+        font-size: 18px;
         padding-left: 12px;
     }
 }
@@ -210,8 +217,18 @@ h2.side-bar__section-header {
     span { display: none; }
 }
 
+.side-bar__section-content {
+    .side-bar-transition;
+    height: auto;
+    opacity: 1;
+    position: relative;
+        left: 0;
+}
+
 .side-bar.collapse .side-bar__section-content {
-    display: none;
+    height: 0;
+    left: 300px;
+    opacity: 0;
 }
 
 #dashboardContainer {
