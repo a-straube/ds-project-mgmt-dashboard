@@ -364,18 +364,20 @@ h2.side-bar__section-header {
         border-radius: 0;
         font-size: .85rem;
         height: 32px;
-
-        .progress-bar {
-            color: #ffffff;
-            font-weight: 400;
-            text-shadow: 0 0 3px @black;
-            text-transform: uppercase;
-        }
     }
 }
 
-#progressGoalBar {
-    transition: 3s ease;
+.progress-bar {
+    .global-transition;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 400;
+    text-shadow: 0 0 3px @black;
+    text-transform: uppercase;
+}
+
+#appContainer.side-bar-open .progress-bar {
+    font-size: 10px;
 }
 
 .production-phase-chart__goal-text {
@@ -394,11 +396,17 @@ h2.side-bar__section-header {
 }
 
 .production-phase-chart__goal {
+    .global-transition;
     font-size: 32px;
     line-height: 48px;
 }
 
+#appContainer.side-bar-open .production-phase-chart__goal {
+    font-size: 21px;
+}
+
 .production-phase-chart__remaining {
+    .global-transition;
     background-color: #94a5b2;
     font-size: 20px;
     line-height: 52px;
@@ -416,6 +424,10 @@ h2.side-bar__section-header {
         border-bottom: 50px solid #94a5b2;
         border-left: 20px solid transparent;
     }
+}
+
+#appContainer.side-bar-open .production-phase-chart__remaining {
+    font-size: 13px;
 }
 
 #productionPhaseChart {
