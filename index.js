@@ -523,8 +523,6 @@ buildCardAccordion = (e_ID, e_AccordionBody) => {
         setAttributes(cpAccordionCollapse, collapseAttrs);
         setAttributes(cpAccordionBody, bodyAttrs);
 
-        // console.log(cpAccordionBody);
-
         cpAccordionItem.append(cpAccordionHeader, cpAccordionCollapse);
         cpAccordionHeader.appendChild(cpAccordionBtn);
         cpAccordionCollapse.appendChild(cpAccordionBody);
@@ -543,8 +541,12 @@ tieCardsToEmployee = () => {
     teamMembers.forEach(async(employee, i) => {
         const e_ID = employee.trello_id,
             e_AccordionBodyID = 'ab_'+e_ID,
-            e_AccordionBody = document.getElementById(e_AccordionBodyID),
-            cardUL = document.createElement('ul');
+            e_AccordionBody = document.getElementById(e_AccordionBodyID);
+
+        buildCardAccordion(e_ID, e_AccordionBody);
+            
+        const e_ToDoListID = await 'cpab_'+e_ID+'0',
+            e_ToDoList = document.getElementById(e_ToDoListID);
             // e_DesignListID = 'cpab_'+e_ID+'0',
             // e_DesignList = document.getElementById(e_DesignListID).querySelector('ul'),
             // e_Phase1ListID = 'cpab_'+e_ID+'0',
@@ -557,13 +559,8 @@ tieCardsToEmployee = () => {
             // e_QAQCList = document.getElementById(e_QAQCListID).querySelector('ul'),
             // e_CompleteListID = 'cpab_'+e_ID+'0',
             // e_CompleteList = document.getElementById(e_CompleteListID).querySelector('ul');
-
-        buildCardAccordion(e_ID, e_AccordionBody);
-            
-        const e_ToDoListID = await 'cpab_'+e_ID+'0',
-            e_ToDoList = document.getElementById(e_ToDoListID);
         
-            let e_Cards = [];
+        let e_Cards = [];
 
         allCards.forEach(card => {
             
@@ -584,11 +581,11 @@ tieCardsToEmployee = () => {
 
         e_Cards.forEach(card => {
             const cardLI = document.createElement('li');
+            
             cardLI.innerHTML = card.client;
-            // cardUL.appendChild(cardLI);
+
             if(card.phase==='5ad3c6eb79d93844dc6b0b40') {
                 e_ToDoList.appendChild(cardLI);
-                // console.table(card);
             } else if(card.phase==='61f613024aa7d53bc468757b') {
                 // e_Phase1List.appendChild(cardLI);
             } else if(card.phase==='61f61307219e3e3bda928af0') {
@@ -601,9 +598,6 @@ tieCardsToEmployee = () => {
                 // e_CompleteList.appendChild(cardLI);
             }
         })
-
-        e_AccordionBody.appendChild(cardUL);
-        
     })
 }
 
