@@ -383,7 +383,6 @@ Trello.get('boards/QCJDklm5/cards', function(cards) {
     makePhaseChart();
     fillSprintChart();
     fillAccordion();
-    tieCardsToEmployee();
 }, function (error){
     console.log(error);
 });
@@ -524,6 +523,8 @@ buildCardAccordion = (e_ID, e_AccordionBody) => {
         setAttributes(cpAccordionCollapse, collapseAttrs);
         setAttributes(cpAccordionBody, bodyAttrs);
 
+        // console.log(cpAccordionBody);
+
         cpAccordionItem.append(cpAccordionHeader, cpAccordionCollapse);
         cpAccordionHeader.appendChild(cpAccordionBtn);
         cpAccordionCollapse.appendChild(cpAccordionBody);
@@ -536,6 +537,74 @@ buildCardAccordion = (e_ID, e_AccordionBody) => {
     })
 
     e_AccordionBody.appendChild(cardAccordion);
+}
+
+tieCardsToEmployee = () => {
+    teamMembers.forEach(async(employee, i) => {
+        const e_ID = employee.trello_id,
+            e_AccordionBodyID = 'ab_'+e_ID,
+            e_AccordionBody = document.getElementById(e_AccordionBodyID),
+            cardUL = document.createElement('ul');
+            // e_DesignListID = 'cpab_'+e_ID+'0',
+            // e_DesignList = document.getElementById(e_DesignListID).querySelector('ul'),
+            // e_Phase1ListID = 'cpab_'+e_ID+'0',
+            // e_Phase1List = document.getElementById(e_Phase1ListID).querySelector('ul'),
+            // e_Phase2ListID = 'cpab_'+e_ID+'0',
+            // e_Phase2List = document.getElementById(e_Phase2ListID).querySelector('ul'),
+            // e_Phase3ListID = 'cpab_'+e_ID+'0',
+            // e_Phase3List = document.getElementById(e_Phase3ListID).querySelector('ul'),
+            // e_QAQCListID = 'cpab_'+e_ID+'0',
+            // e_QAQCList = document.getElementById(e_QAQCListID).querySelector('ul'),
+            // e_CompleteListID = 'cpab_'+e_ID+'0',
+            // e_CompleteList = document.getElementById(e_CompleteListID).querySelector('ul');
+
+        buildCardAccordion(e_ID, e_AccordionBody);
+            
+        const e_ToDoListID = await 'cpab_'+e_ID+'0',
+            e_ToDoList = document.getElementById(e_ToDoListID);
+        
+            let e_Cards = [];
+
+        allCards.forEach(card => {
+            
+            let cardData = {
+                id: card.id,
+                client: card.name,
+                members: card.idMembers,
+                phase: card.idList,
+                trello_link: card.shortUrl
+            }
+
+            cardData.members.forEach(member => {
+                if(e_ID===member) {
+                    e_Cards.push(cardData);
+                }
+            })
+        })
+
+        e_Cards.forEach(card => {
+            const cardLI = document.createElement('li');
+            cardLI.innerHTML = card.client;
+            // cardUL.appendChild(cardLI);
+            if(card.phase==='5ad3c6eb79d93844dc6b0b40') {
+                e_ToDoList.appendChild(cardLI);
+                // console.table(card);
+            } else if(card.phase==='61f613024aa7d53bc468757b') {
+                // e_Phase1List.appendChild(cardLI);
+            } else if(card.phase==='61f61307219e3e3bda928af0') {
+                // e_Phase2List.appendChild(cardLI);
+            } else if(card.phase==='61f6130c6e9f198e257e8cb2') {
+                // e_Phase3List.appendChild(cardLI);
+            } else if(card.phase==='5ad3c6eb79d93844dc6b0b42') {
+                // e_QAQCList.appendChild(cardLI);
+            } else if(card.phase==='5ad3c6eb79d93844dc6b0b41') {
+                // e_CompleteList.appendChild(cardLI);
+            }
+        })
+
+        e_AccordionBody.appendChild(cardUL);
+        
+    })
 }
 
 fillAccordion = () => {
@@ -602,68 +671,5 @@ fillAccordion = () => {
 
         eAccordion.appendChild(eAccordionItem);
     })
-}
-
-tieCardsToEmployee = () => {
-    teamMembers.forEach(employee => {
-        const e_ID = employee.trello_id,
-            e_AccordionBodyID = 'ab_'+e_ID,
-            e_AccordionBody = document.getElementById(e_AccordionBodyID),
-            cardUL = document.createElement('ul');
-            // e_ToDoListID = 'cpab_'+e_ID+'0',
-            // e_ToDoList = document.getElementById(${e_ToDoListID}),
-            // asdf = e_ToDoList.querySelector('ul'),
-            // e_DesignListID = 'cpab_'+e_ID+'0',
-            // e_DesignList = document.getElementById(e_DesignListID).querySelector('ul'),
-            // e_Phase1ListID = 'cpab_'+e_ID+'0',
-            // e_Phase1List = document.getElementById(e_Phase1ListID).querySelector('ul'),
-            // e_Phase2ListID = 'cpab_'+e_ID+'0',
-            // e_Phase2List = document.getElementById(e_Phase2ListID).querySelector('ul'),
-            // e_Phase3ListID = 'cpab_'+e_ID+'0',
-            // e_Phase3List = document.getElementById(e_Phase3ListID).querySelector('ul'),
-            // e_QAQCListID = 'cpab_'+e_ID+'0',
-            // e_QAQCList = document.getElementById(e_QAQCListID).querySelector('ul'),
-            // e_CompleteListID = 'cpab_'+e_ID+'0',
-            // e_CompleteList = document.getElementById(e_CompleteListID).querySelector('ul');
-        let e_Cards = [];
-
-        allCards.forEach(card => {
-            
-            let cardData = {
-                id: card.id,
-                client: card.name,
-                members: card.idMembers,
-                phase: card.idList,
-                trello_link: card.shortUrl
-            }
-
-            cardData.members.forEach(member => {
-                if(e_ID===member) {
-                    e_Cards.push(cardData);
-                }
-            })
-        })
-
-        e_Cards.forEach(card => {
-            const cardLI = document.createElement('li');
-            cardLI.innerHTML = card.client;
-            // cardUL.appendChild(cardLI);
-            if(card.phase==='5ad3c6eb79d93844dc6b0b40') {
-                // asdf.appendChild(cardLI);
-            } else if(card.phase==='61f613024aa7d53bc468757b') {
-                // e_Phase1List.appendChild(cardLI);
-            } else if(card.phase==='61f61307219e3e3bda928af0') {
-                // e_Phase2List.appendChild(cardLI);
-            } else if(card.phase==='61f6130c6e9f198e257e8cb2') {
-                // e_Phase3List.appendChild(cardLI);
-            } else if(card.phase==='5ad3c6eb79d93844dc6b0b42') {
-                // e_QAQCList.appendChild(cardLI);
-            } else if(card.phase==='5ad3c6eb79d93844dc6b0b41') {
-                // e_CompleteList.appendChild(cardLI);
-            }
-        })
-
-        e_AccordionBody.appendChild(cardUL);
-        buildCardAccordion(e_ID, e_AccordionBody);
-    })
+    tieCardsToEmployee();
 }
