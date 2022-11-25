@@ -516,7 +516,7 @@ buildCardAccordion = (e_ID, e_AccordionBody) => {
         // Add Bootstrap accordion classes
         cpAccordionItem.setAttribute('class', 'accordion-item');
         cpAccordionBtn.classList.add('accordion-button', 'collapsed');
-        cpAccordionCollapse.classList.add('accordion-collapse', 'collapse')
+        cpAccordionCollapse.classList.add('accordion-collapse', 'collapse');
 
         setAttributes(cpAccordionHeader, headerAttrs);
         setAttributes(cpAccordionBtn, btnAttrs);
