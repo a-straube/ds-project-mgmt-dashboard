@@ -546,19 +546,19 @@ tieCardsToEmployee = () => {
         buildCardAccordion(e_ID, e_AccordionBody);
             
         const e_ToDoListID = await 'cpab_'+e_ID+'0',
-            e_ToDoList = document.getElementById(e_ToDoListID).querySelector('ul');
+            e_ToDoList = document.getElementById(e_ToDoListID).querySelector('ul'),
             // e_DesignListID = 'cpab_'+e_ID+'0',
             // e_DesignList = document.getElementById(e_DesignListID).querySelector('ul'),
-            // e_Phase1ListID = 'cpab_'+e_ID+'0',
-            // e_Phase1List = document.getElementById(e_Phase1ListID).querySelector('ul'),
-            // e_Phase2ListID = 'cpab_'+e_ID+'0',
-            // e_Phase2List = document.getElementById(e_Phase2ListID).querySelector('ul'),
-            // e_Phase3ListID = 'cpab_'+e_ID+'0',
-            // e_Phase3List = document.getElementById(e_Phase3ListID).querySelector('ul'),
-            // e_QAQCListID = 'cpab_'+e_ID+'0',
-            // e_QAQCList = document.getElementById(e_QAQCListID).querySelector('ul'),
-            // e_CompleteListID = 'cpab_'+e_ID+'0',
-            // e_CompleteList = document.getElementById(e_CompleteListID).querySelector('ul');
+            e_Phase1ListID = 'cpab_'+e_ID+'2',
+            e_Phase1List = document.getElementById(e_Phase1ListID).querySelector('ul'),
+            e_Phase2ListID = 'cpab_'+e_ID+'3',
+            e_Phase2List = document.getElementById(e_Phase2ListID).querySelector('ul'),
+            e_Phase3ListID = 'cpab_'+e_ID+'4',
+            e_Phase3List = document.getElementById(e_Phase3ListID).querySelector('ul'),
+            e_QAQCListID = 'cpab_'+e_ID+'5',
+            e_QAQCList = document.getElementById(e_QAQCListID).querySelector('ul'),
+            e_CompleteListID = 'cpab_'+e_ID+'6',
+            e_CompleteList = document.getElementById(e_CompleteListID).querySelector('ul');
         
         let e_Cards = [];
 
@@ -587,15 +587,15 @@ tieCardsToEmployee = () => {
             if(card.phase==='5ad3c6eb79d93844dc6b0b40') {
                 e_ToDoList.appendChild(cardLI);
             } else if(card.phase==='61f613024aa7d53bc468757b') {
-                // e_Phase1List.appendChild(cardLI);
+                e_Phase1List.appendChild(cardLI);
             } else if(card.phase==='61f61307219e3e3bda928af0') {
-                // e_Phase2List.appendChild(cardLI);
+                e_Phase2List.appendChild(cardLI);
             } else if(card.phase==='61f6130c6e9f198e257e8cb2') {
-                // e_Phase3List.appendChild(cardLI);
+                e_Phase3List.appendChild(cardLI);
             } else if(card.phase==='5ad3c6eb79d93844dc6b0b42') {
-                // e_QAQCList.appendChild(cardLI);
+                e_QAQCList.appendChild(cardLI);
             } else if(card.phase==='5ad3c6eb79d93844dc6b0b41') {
-                // e_CompleteList.appendChild(cardLI);
+                e_CompleteList.appendChild(cardLI);
             }
         })
     })
