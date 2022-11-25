@@ -42,7 +42,7 @@
     background-attachment: fixed;
 }
 
-#appContainer .collapse:not(.show) { display: block; }
+#appContainer .side-bar.collapse:not(.show) { display: block; }
 
 #sideBarToggleBtn {
     background-color: #ffffff;
@@ -657,22 +657,39 @@ h2.side-bar__section-header {
 }
 
 #employeeBreakdownNav {
-    .nav-link {
+    button.nav-link {
+        .global-transition;
+        background-color: rgb(215 220 225 / 40%);
+        border: none;
+        box-shadow: none;
+        margin: 1px 0;
         position: relative;
+        text-align: left;
+
+        &:hover {
+            background-color: rgb(220 225 230 / 95%);
+            box-shadow: -3px 6px 6px rgba(0,10,20,0.45);
+            margin-left: 1px;
+        }
+
+        &.active {
+            background-color: #f7f7f7;
+            box-shadow: -3px 8px 6px rgba(0,10,20,0.5);
+            line-height: 60px;
+            margin: 6px 0 10px;
+            padding-bottom: 60px;
+        }
     }
 }
 
 #employeeBreakdownTabPanes {
-    background-color: #f7f7f7;
+    min-height: 500px;
     position: absolute;
         top: 0;
         right: 0;
     width: 70%;
     z-index: 2;
-    @media(min-width: @scn-xl) {
-        max-height: 770px;
-        overflow-y: scroll;
-    }
+    @media(min-width: @scn-xl) { max-height: 770px; }
 }
 
 .employee-breakdown__start {
@@ -702,27 +719,17 @@ h2.side-bar__section-header {
         .global-transition;
         background-color: rgb(215 220 225 / 40%);
         box-shadow: none;
-        margin: 1px 0;
 
         &:hover {
             background-color: rgb(220 225 230 / 95%);
-            box-shadow: -3px 6px 6px rgba(0,10,20,0.45);
+            box-shadow: 1px 2px 5px rgba(0,10,20,0.45);
             margin-left: 1px;
         }
     }
 
-    .accordion-button:not(.collapsed) {
-        background-color: #f7f7f7;
-        box-shadow: -3px 8px 6px rgba(0,10,20,0.5);
-        line-height: 60px;
-        margin: 6px 0 10px;
-        padding-bottom: 60px;
-    }
+    .accordion-button:not(.collapsed) { background-color: #f7f7f7; }
 
-    .accordion-button:focus {
-        box-shadow: -3px 8px 6px rgba(0,10,20,0.5);
-        z-index: 1;
-    }
+    .accordion-button:focus { z-index: 1; }
 }
 
 .e-name {
