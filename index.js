@@ -607,11 +607,9 @@ populateEmployeeBreakdownTabs = () => {
 
     teamMembers.forEach((employee, i) => {
         const eName = employee.name,
-        eID = employee.trello_id,
         ePosition = employee.position,
         eEmail = employee.email,
         ePhone = employee.phone,
-
         eNavBtn = document.createElement('button'),
         eTabPane = document.createElement('div');
 
@@ -621,6 +619,7 @@ populateEmployeeBreakdownTabs = () => {
             'data-bs-target': '#e'+i,
             role: 'tab'
         };
+
         const paneAttrs = {
             id: 'e'+i,
             class: 'tab-pane',
@@ -630,19 +629,15 @@ populateEmployeeBreakdownTabs = () => {
         setAttributes(eNavBtn, btnAttrs);
         setAttributes(eTabPane, paneAttrs);
 
-        // eNavTabAnchor.innerHTML = '<div class="e-name">'+
-        //                         eName+
-        //                         '</div><div class="e-info"><span>'+
-        //                         ePosition+
-        //                         '</span><a href="insert-company-internal-message-link-here"><i class="fa-solid fa-comments"></i></a><a href="mailto:'+
-        //                         eEmail+
-        //                         '"><i class="fa-regular fa-envelope"></i></a><a href="tel:'+
-        //                         ePhone+
-        //                         '"><i class="fa-solid fa-phone"></i></a></div>';
         eNavBtn.innerHTML = '<div class="e-name">'+
                                 eName+
-                                '</div>';
-        eTabPane.innerHTML = 'Hello! This is '+eName+"'s workload:"
+                                '</div><div class="e-info"><span>'+
+                                ePosition+
+                                '</span><a href="insert-company-internal-message-link-here"><i class="fa-solid fa-comments"></i></a><a href="mailto:'+
+                                eEmail+
+                                '"><i class="fa-regular fa-envelope"></i></a><a href="tel:'+
+                                ePhone+
+                                '"><i class="fa-solid fa-phone"></i></a></div>';
 
         ebNav.appendChild(eNavBtn);
         ebTabPanes.appendChild(eTabPane);
