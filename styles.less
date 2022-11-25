@@ -653,6 +653,26 @@ h2.side-bar__section-header {
 
 #employeeBreakdownNav {
     flex-direction: column;
+    width: 30%;
+}
+
+#employeeBreakdownNav {
+    .nav-link {
+        position: relative;
+    }
+}
+
+#employeeBreakdownTabPanes {
+    background-color: #f7f7f7;
+    position: absolute;
+        top: 0;
+        right: 0;
+    width: 70%;
+    z-index: 2;
+    @media(min-width: @scn-xl) {
+        max-height: 770px;
+        overflow-y: scroll;
+    }
 }
 
 .employee-breakdown__start {
@@ -674,18 +694,9 @@ h2.side-bar__section-header {
     }
 }
 
-#employeeBreakdownAccordion {
+#employeeBreakdown {
     position: relative;
     width: 100%;
-    
-    .accordion-item {
-        background: transparent;
-        border: none;
-    }
-
-    .accordion-item:first-of-type .accordion-button { border-top-right-radius: 0; }
-
-    .accordion-header { width: 30%; }
 
     .accordion-button {
         .global-transition;
@@ -708,41 +719,24 @@ h2.side-bar__section-header {
         padding-bottom: 60px;
     }
 
-    >.accordion-item:first-child {
-        .accordion-button, .accordion-button:not(.collapsed) { margin-top: 0; }
-    }
-
     .accordion-button:focus {
         box-shadow: -3px 8px 6px rgba(0,10,20,0.5);
         z-index: 1;
-    }
-    
-    .accordion-body {
-        background-color: #f7f7f7;
-        position: absolute;
-            top: 0;
-            right: 0;
-        width: 70%;
-        z-index: 2;
-        @media(min-width: @scn-xl) {
-            max-height: 770px;
-            overflow-y: scroll;
-        }
     }
 }
 
 .e-name {
     .global-transition;
-    color: rgba(10, 40, 70, 1);
-    font-size: 25px;
-    font-weight: 700;
+    color: rgba(21, 21, 21, 0.96);
+    font-size: 18px;
+    font-weight: 300;
 }
 
-.collapsed {
+.active {
     .e-name {
-        color: rgba(21, 21, 21, 0.96);
-        font-size: 18px;
-        font-weight: 300;
+        color: rgba(10, 40, 70, 1);
+        font-size: 25px;
+        font-weight: 700;
     }
 }
 
@@ -750,7 +744,7 @@ h2.side-bar__section-header {
     .global-transition;
     background: #f7f7f7;
     border-top: 1px solid @light-gray;
-    display: flex;
+    display: none;
     position: absolute;
         bottom: 0;
         left: 0;
@@ -771,6 +765,6 @@ h2.side-bar__section-header {
     }
 }
 
-.collapsed {
-    .e-info { display: none; }
+.active {
+    .e-info { display: flex; }
 }
