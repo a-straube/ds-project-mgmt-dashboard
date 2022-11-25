@@ -382,7 +382,7 @@ Trello.get('boards/QCJDklm5/cards', function(cards) {
     getDateToday();
     makePhaseChart();
     fillSprintChart();
-    fillAccordion();
+    populateEmployeeBreakdownTabs();
 }, function (error){
     console.log(error);
 });
@@ -540,13 +540,13 @@ buildCardAccordion = (e_ID, e_AccordionBody) => {
 tieCardsToEmployee = () => {
     teamMembers.forEach(async(employee, i) => {
         const e_ID = employee.trello_id,
-            e_AccordionBodyID = 'ab_'+e_ID,
+            e_AccordionBodyID = 'e'+i,
             e_AccordionBody = document.getElementById(e_AccordionBodyID);
 
         buildCardAccordion(e_ID, e_AccordionBody);
             
         const e_ToDoListID = await 'cpab_'+e_ID+'0',
-            e_ToDoList = document.getElementById(e_ToDoListID);
+            e_ToDoList = document.getElementById(e_ToDoListID).querySelector('ul');
             // e_DesignListID = 'cpab_'+e_ID+'0',
             // e_DesignList = document.getElementById(e_DesignListID).querySelector('ul'),
             // e_Phase1ListID = 'cpab_'+e_ID+'0',
@@ -601,69 +601,51 @@ tieCardsToEmployee = () => {
     })
 }
 
-fillAccordion = () => {
-    const eAccordion = document.getElementById('employeeBreakdownAccordion');
+populateEmployeeBreakdownTabs = () => {
+    const ebNav = document.getElementById('employeeBreakdownNav'),
+    ebTabPanes = document.getElementById('employeeBreakdownTabPanes');
 
     teamMembers.forEach((employee, i) => {
-        let employeeName = employee.name,
-            e_ID = employee.trello_id,
-            e_position = employee.position,
-            e_email = employee.email,
-            e_phone = employee.phone,
-            eAccordionItem = document.createElement('div'),
-            eAccordionHeader = document.createElement('h2'),
-            eAccordionBtn = document.createElement('button'),
-            eAccordionCollapse = document.createElement('div'),
-            eAccordionBody = document.createElement('div');
+        const eName = employee.name,
+        eID = employee.trello_id,
+        ePosition = employee.position,
+        eEmail = employee.email,
+        ePhone = employee.phone,
 
-        const headerAttrs = {
-            id: 'heading'+i,
-            class: 'accordion-header'
-        }
+        eNavBtn = document.createElement('button'),
+        eTabPane = document.createElement('div');
 
         const btnAttrs = {
-            data_bs_toggle: 'collapse',
-            data_bs_target: '#collapse'+i,
-            aria_expanded: 'true',
-            aria_controls: 'collapse'+i
-        }
+            class: 'nav-link',
+            'data-bs-toggle': 'tab',
+            'data-bs-target': '#e'+i,
+            role: 'tab'
+        };
+        const paneAttrs = {
+            id: 'e'+i,
+            role: 'tabpanel'
+        };
 
-        const collapseAttrs = {
-            id: 'collapse'+i,
-            aria_labeledby: 'heading'+i,
-            data_bs_parent: '#employeeBreakdownAccordion'
-        }
+        setAttributes(eNavBtn, btnAttrs);
+        eTabPane.classList.add('tab-pane', 'fade');
+        setAttributes(eTabPane, paneAttrs);
 
-        const bodyAttrs = {
-            id: 'ab_'+e_ID,
-            class: 'accordion-body'
-        }
+        // eNavTabAnchor.innerHTML = '<div class="e-name">'+
+        //                         eName+
+        //                         '</div><div class="e-info"><span>'+
+        //                         ePosition+
+        //                         '</span><a href="insert-company-internal-message-link-here"><i class="fa-solid fa-comments"></i></a><a href="mailto:'+
+        //                         eEmail+
+        //                         '"><i class="fa-regular fa-envelope"></i></a><a href="tel:'+
+        //                         ePhone+
+        //                         '"><i class="fa-solid fa-phone"></i></a></div>';
+        eNavBtn.innerHTML = '<div class="e-name">'+
+                                eName+
+                                '</div>';
+        eTabPane.innerHTML = 'Hello! This is '+eName+"'s workload:"
 
-        // Add Bootstrap accordion classes
-        eAccordionItem.setAttribute('class', 'accordion-item');
-        eAccordionBtn.classList.add('accordion-button', 'collapsed');
-        eAccordionCollapse.classList.add('accordion-collapse', 'collapse')
-
-        setAttributes(eAccordionHeader, headerAttrs);
-        setAttributes(eAccordionBtn, btnAttrs);
-        setAttributes(eAccordionCollapse, collapseAttrs);
-        setAttributes(eAccordionBody, bodyAttrs);
-
-        eAccordionItem.append(eAccordionHeader, eAccordionCollapse);
-        eAccordionHeader.appendChild(eAccordionBtn);
-        eAccordionCollapse.appendChild(eAccordionBody);
-
-        eAccordionBtn.innerHTML = '<div class="e-name">'+
-                                employeeName+
-                                '</div><div class="e-info"><span>'+
-                                e_position+
-                                '</span><a href="insert-company-internal-message-link-here"><i class="fa-solid fa-comments"></i></a><a href="mailto:'+
-                                e_email+
-                                '"><i class="fa-regular fa-envelope"></i></a><a href="tel:'+
-                                e_phone+
-                                '"><i class="fa-solid fa-phone"></i></a></div>';
-
-        eAccordion.appendChild(eAccordionItem);
+        ebNav.appendChild(eNavBtn);
+        ebTabPanes.appendChild(eTabPane);
     })
     tieCardsToEmployee();
 }
