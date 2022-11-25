@@ -623,11 +623,11 @@ populateEmployeeBreakdownTabs = () => {
         };
         const paneAttrs = {
             id: 'e'+i,
+            class: 'tab-pane',
             role: 'tabpanel'
         };
 
         setAttributes(eNavBtn, btnAttrs);
-        eTabPane.classList.add('tab-pane', 'fade');
         setAttributes(eTabPane, paneAttrs);
 
         // eNavTabAnchor.innerHTML = '<div class="e-name">'+
