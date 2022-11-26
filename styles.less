@@ -1,6 +1,7 @@
 @black: #222222;
 @light-gray: #d8d8d8;
 @nav-bg: #0f293a;
+@pure-white: #ffffff;
 
 @scn-sm: 780px;
 @scn-md: 900px;
@@ -29,7 +30,7 @@
     border: 8px solid #dde2f2;  
 
     &:hover {
-        border-color: #ffffff;;
+        border-color: @pure-white;
     }
 }
 
@@ -45,7 +46,7 @@
 #appContainer .side-bar.collapse:not(.show) { display: block; }
 
 #sideBarToggleBtn {
-    background-color: #ffffff;
+    background-color: @pure-white;
     border: 2px solid @nav-bg;
     border-radius: 50%;
     box-shadow: 0 2px 5px @black;
@@ -144,8 +145,8 @@
 }
 
 #userInfo {
-    border-bottom: 1px solid #ffffff;
-    color: #ffffff;
+    border-bottom: 1px solid @pure-white;
+    color: @pure-white;
     display: flex;
     padding: 40px 25px 35px;
 
@@ -174,9 +175,9 @@
 
 #settingsToggle {
     background: transparent;
-    border: 1px solid #ffffff;
+    border: 1px solid @pure-white;
     border-radius: 50%;
-    color: #ffffff;
+    color: @pure-white;
     font-size: 28px;
     height: 48px;
         width: 48px;
@@ -247,7 +248,7 @@ h2.side-bar__section-header {
 }
 
 .chart-container {
-    border: 2px solid #ffffff;
+    border: 2px solid @pure-white;
     @media(min-width: @scn-lg) {
         box-shadow: 0 1px 16px rgb(61 69 76 / 65%);
         margin: 65px 0;
@@ -279,7 +280,7 @@ h2.side-bar__section-header {
 }
 
 .chart-container__content {
-    border-top: 2px solid #ffffff;
+    border-top: 2px solid @pure-white;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -315,7 +316,7 @@ h2.side-bar__section-header {
         z-index: -1;
     }
 
-    .chart-container__title { background: linear-gradient(180deg, #9aafb2 0%, #ffffff); }
+    .chart-container__title { background: linear-gradient(180deg, #9aafb2 0%, @pure-white); }
 }
 
 .production-phase-chart__info {
@@ -325,7 +326,7 @@ h2.side-bar__section-header {
 
 .production-phase-chart__list {
     border: 1px solid @light-gray;
-    color: #ffffff;
+    color: @pure-white;
     list-style: none;
     min-width: 170px;
     padding: 0;
@@ -369,7 +370,7 @@ h2.side-bar__section-header {
 
 .progress-bar {
     .global-transition;
-    color: #ffffff;
+    color: @pure-white;
     font-size: 12px;
     font-weight: 400;
     text-shadow: 0 0 3px @black;
@@ -468,7 +469,7 @@ h2.side-bar__section-header {
 
     .chart-container__title {
         background: linear-gradient(180deg, #a7c4a5 0%, 
-        #ffffff);
+        @pure-white);
     }
 
     .chart-container__content { flex-wrap: wrap; }
@@ -515,7 +516,7 @@ h2.side-bar__section-header {
 }
 
 .sprintChartList__member-name {
-    color: #ffffff;
+    color: @pure-white;
     font-size: 17px;
     font-weight: 200;
     min-width: 200px;
@@ -595,7 +596,7 @@ h2.side-bar__section-header {
         z-index: -1;
     }
 
-    .chart-container__title { background: linear-gradient(180deg, #dacaa9 0%, #ffffff); }
+    .chart-container__title { background: linear-gradient(180deg, #dacaa9 0%, @pure-white); }
     
     .chart-container__content {
         @media(min-width: @scn-lg) { padding: 60px; }
@@ -633,6 +634,30 @@ h2.side-bar__section-header {
 // Employee Breakdown //
 ////////////////////////
 
+@keyframes placeholderShare {
+    0%   {
+        top: 55px;
+        left: 29%;
+        text-shadow: -1px 2px 8px rgba(5,5,5,0.25);
+    }
+    100% {
+        top: 45px;
+        left: 28%;
+        text-shadow: -15px 16px 25px rgba(5,5,5,0.9);
+    }
+}
+
+@keyframes placeholderShareSquare {
+    0%   {
+        top: 0;
+        left: 0;
+    }
+    100% {
+        top: 6px;
+        left: 6px;
+    }
+}
+
 .employee-breakdown {
     min-height: 850px;
     position: relative;
@@ -648,18 +673,17 @@ h2.side-bar__section-header {
         z-index: -1;
     }
 
-    .chart-container__title { background: linear-gradient(180deg, #afb5c3 0%, #ffffff); }
+    .chart-container__title { background: linear-gradient(180deg, #afb5c3 0%, @pure-white); }
 }
 
 #employeeBreakdownNav {
     flex-direction: column;
+    padding-top: 20px;
     width: 30%;
-}
 
-#employeeBreakdownNav {
     button.nav-link {
         .global-transition;
-        background-color: rgb(215 220 225 / 40%);
+        background-color: rgb(215 220 225 / 55%);
         border: none;
         box-shadow: none;
         margin: 1px 0;
@@ -683,7 +707,7 @@ h2.side-bar__section-header {
 }
 
 #employeeBreakdownTabPanes {
-    min-height: 500px;
+    min-height: 555px;
     position: absolute;
         top: 0;
         right: 0;
@@ -693,21 +717,47 @@ h2.side-bar__section-header {
 }
 
 .employee-breakdown__start {
+    background-color: rgba(122,122,122,0.45);
+    border: 2px solid @pure-white;
+    border-radius: 5px;
+    height: 100%;
+        width: 100%;
+    padding-top: 85px;
     position: absolute;
-        top: 40px;
-        right: 250px;
+    text-align: center;
     z-index: 0;
 
+    .fa-share {
+        animation-name: placeholderShare;
+        animation-duration: 1500ms;
+        animation-iteration-count: infinite;
+        color: #879cc1;
+        font-size: 350px;
+        position: absolute;
+            top: 15px;
+        transform: scaleX(-1) skewX(20deg);
+    }
+
     .fa-share-from-square {
+        animation-name: placeholderShareSquare;
+        animation-duration: 1500ms;
+        animation-iteration-count: infinite;
         color: rgba(250,252,252,0.2);
-        font-size: 450px;
+        font-size: 380px;
+        position: relative;
         transform: scaleX(-1) skewX(20deg);
     }
 
     p {
-        color: white;
+        background-color: rgba(10,10,25,0.5);
+        border-top: 1px solid @pure-white;
+        border-bottom: 1px solid @pure-white;
+        color: @pure-white;
         font-size: 64px;
-        margin-top: -230px;
+        line-height: 140px;
+        margin-top: -278px;
+        position: relative;
+        text-shadow: 1px 2px rgba(0,0,0,0.75);
     }
 }
 
