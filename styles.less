@@ -666,8 +666,13 @@ h2.side-bar__section-header {
 }
 
 #employeeBreakdownNav {
+    background-color: rgba(55,55,80,0.85);
+    border-top: 1px solid @pure-white;
+    border-left: 1px solid @pure-white;
+    border-bottom: 1px solid @pure-white;
     flex-direction: column;
-    padding-top: 20px;
+    margin-top: 20px;
+    padding: 15px 0px 15px 15px;
     width: 30%;
 
     button.nav-link {
@@ -675,7 +680,7 @@ h2.side-bar__section-header {
         background-color: rgb(215 220 225 / 55%);
         border: none;
         box-shadow: none;
-        margin: 1px 0;
+        margin: 2px 0;
         position: relative;
         text-align: left;
 
@@ -753,6 +758,11 @@ h2.side-bar__section-header {
 #employeeBreakdown {
     position: relative;
     width: 100%;
+
+    .accordion {
+        border: 1px solid @black;
+        border-radius: .25rem;
+    }
 
     .accordion-button {
         .global-transition;
