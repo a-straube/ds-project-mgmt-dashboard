@@ -387,31 +387,46 @@ Trello.get('boards/QCJDklm5/cards', function(cards) {
     console.log(error);
 });
     
-document.addEventListener("DOMContentLoaded", function() {
-    var lazyloadGraph = document.getElementById('chartTrigger');    
-    var lazyloadThrottleTimeout;
+// OLD LAZY LOAD FOR DEPARTMENT WORKLOAD AND SPRINT CHARTS, REPLACED WITH WINDOW.ONSCROLL BELOW -221201
+// -----------------------------------------------------------------------------------------------------
+// document.addEventListener("DOMContentLoaded", function() {
+//     var lazyloadGraph = document.getElementById('chartTrigger');    
+//     var lazyloadThrottleTimeout;
     
-    function lazyload () {
-        if(lazyloadThrottleTimeout) {
-            clearTimeout(lazyloadThrottleTimeout);
-        }    
+//     function lazyload () {
+//         if(lazyloadThrottleTimeout) {
+//             clearTimeout(lazyloadThrottleTimeout);
+//         }    
             
-        lazyloadThrottleTimeout = setTimeout(function() {
-            var scrollTop = window.pageYOffset;
-            if(lazyloadGraph.offsetTop < (window.innerHeight + scrollTop)) {
-                addSprintChartXAxisScale(sprintTaskCompletionTotals, sprintChartList);
-                fillDepartmentWorkloadChart(adminCount, devCount, hrCount, itCount, productionCount, salesCount);
-                document.removeEventListener("scroll", lazyload);
-                window.removeEventListener("resize", lazyload);
-                window.removeEventListener("orientationChange", lazyload);
-            }
-        }, 20);
-    }
+//         lazyloadThrottleTimeout = setTimeout(function() {
+//             var scrollTop = window.pageYOffset;
+//             if(lazyloadGraph.offsetTop < (window.innerHeight + scrollTop)) {
+//                 addSprintChartXAxisScale(sprintTaskCompletionTotals, sprintChartList);
+//                 fillDepartmentWorkloadChart(adminCount, devCount, hrCount, itCount, productionCount, salesCount);
+//                 document.removeEventListener("scroll", lazyload);
+//                 window.removeEventListener("resize", lazyload);
+//                 window.removeEventListener("orientationChange", lazyload);
+//             }
+//         }, 20);
+//     }
     
-    document.addEventListener("scroll", lazyload);
-    window.addEventListener("resize", lazyload);
-    window.addEventListener("orientationChange", lazyload);
-});
+//     document.addEventListener("scroll", lazyload);
+//     window.addEventListener("resize", lazyload);
+//     window.addEventListener("orientationChange", lazyload);
+// });
+// ---------------------------------------------------------------
+
+// Delayed animation on scroll for Department Workload and Sprint Charts
+let hasScrolled = false;
+window.onscroll = () => {
+    if(!hasScrolled) {
+        setTimeout(function() {
+            addSprintChartXAxisScale(sprintTaskCompletionTotals, sprintChartList);
+            fillDepartmentWorkloadChart(adminCount, devCount, hrCount, itCount, productionCount, salesCount);
+        }, 1400);
+        hasScrolled = true;
+    }
+}
 
 /////////////
 // Sidebar //
