@@ -2,7 +2,7 @@ const teamMembers = [
     {
         name: "Leonardo Vinci",
         trello_id: "61f6183fe803bd5eee4e525c",
-        position: "Supervisor",
+        position: "UX/UI Design",
         phone: "111-111-1111",
         email: "test@test.com",
         office_status: ""
@@ -10,7 +10,7 @@ const teamMembers = [
     {
         name: "Raphael Urbino",
         trello_id: "5ad3c6e888a4bb8ba338d865",
-        position: "Development",
+        position: "Senior Back-End Dev",
         phone: "111-111-1111",
         email: "test@test.com",
         office_status: ""
@@ -18,7 +18,7 @@ const teamMembers = [
     {
         name: "Donatello Bardi",
         trello_id: "63818b174ca8dc0583fba83d",
-        position: "Development",
+        position: "Junior Back-End Dev",
         phone: "111-111-1111",
         email: "test@test.com",
         office_status: ""
@@ -26,7 +26,7 @@ const teamMembers = [
     {
         name: "Michelangelo Simoni",
         trello_id: "61f61858a589f81b521b717a",
-        position: "HR Manager",
+        position: "Front-End Dev",
         phone: "111-111-1111",
         email: "test@test.com",
         office_status: "OOO.0705"
@@ -34,7 +34,7 @@ const teamMembers = [
     {
         name: "April O'Neil",
         trello_id: "63818bb01c409500fb72304e",
-        position: "HR Manager",
+        position: "Dev Lead",
         phone: "111-111-1111",
         email: "test@test.com",
         office_status: "OOO.0705"
