@@ -121,7 +121,7 @@
   padding: 25px 15px;
 }
 #logo {
-  background: url(placeholder-logo.png) 0 0 no-repeat;
+  background: url(img/placeholder-logo.png) 0 0 no-repeat;
   background-size: cover;
   filter: invert(0.4) sepia(0.5) hue-rotate(163deg) saturate(600%);
   height: 57px;
@@ -291,7 +291,7 @@ h2.side-bar__section-header span {
 }
 .production-phase-chart:after {
   content: '';
-  background-image: url(production-phase-chart-bg.jpg);
+  background-image: url(img/production-phase-chart-bg.jpg);
   position: absolute;
   top: 0;
   height: 100%;
@@ -423,7 +423,7 @@ h2.side-bar__section-header span {
 }
 .sprint-chart:after {
   content: '';
-  background-image: url(chart-bg-tara-winstead.jpg);
+  background-image: url(img/chart-bg-tara-winstead.jpg);
   background-position: center center;
   filter: hue-rotate(84deg);
   height: 100%;
@@ -543,7 +543,7 @@ h2.side-bar__section-header span {
 }
 .department-workload-chart:after {
   content: '';
-  background-image: url(chart-bg-alt.jpg);
+  background-image: url(img/chart-bg-alt.jpg);
   background-position: center center;
   height: 100%;
   width: 100%;
@@ -612,7 +612,7 @@ h2.side-bar__section-header span {
 }
 .employee-breakdown:after {
   content: '';
-  background-image: url(sprint-chart-bg.jpg);
+  background-image: url(img/sprint-chart-bg.jpg);
   background-position: center center;
   height: 100%;
   width: 100%;
