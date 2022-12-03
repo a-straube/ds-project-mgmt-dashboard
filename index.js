@@ -17,7 +17,7 @@ const teamMembers = [
     },
     {
         name: "Donatello Bardi",
-        trello_id: "5ad3c6e888a4bb8ba338d8XX",
+        trello_id: "63818b174ca8dc0583fba83d",
         position: "Development",
         phone: "111-111-1111",
         email: "test@test.com",
@@ -33,7 +33,7 @@ const teamMembers = [
     },
     {
         name: "April O'Neil",
-        trello_id: "61f61858a589f81b521b7aaa",
+        trello_id: "63818bb01c409500fb72304e",
         position: "HR Manager",
         phone: "111-111-1111",
         email: "test@test.com",
