@@ -309,6 +309,7 @@ h2.side-bar__section-header span {
   border: 1px solid #d8d8d8;
   color: #ffffff;
   list-style: none;
+  margin: 15px 0;
   min-width: 170px;
   padding: 0;
   text-shadow: 1px 1px #3e3e3e;
@@ -344,7 +345,6 @@ h2.side-bar__section-header span {
 .production-phase-chart__goal-container {
   background-color: rgba(34, 58, 66, 0.75);
   border: 1px solid rgba(200, 200, 200, 0.75);
-  margin-top: 30px;
   padding: 20px;
 }
 .production-phase-chart__goal-container .progress {
@@ -359,9 +359,9 @@ h2.side-bar__section-header span {
 .progress-bar {
   transition: all 200ms ease-in-out;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
-  text-shadow: 0 0 3px #222222;
+  text-shadow: 1px 1px 2px #222222;
   text-transform: uppercase;
 }
 #appContainer.side-bar-open .progress-bar {
