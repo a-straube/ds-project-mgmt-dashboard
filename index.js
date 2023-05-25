@@ -502,27 +502,29 @@ buildCardAccordion = (e_ID, e_AccordionBody) => {
         const cpAccordionItem = document.createElement('div'),
             cpAccordionHeader = document.createElement('h2'),
             cpAccordionBtn = document.createElement('button'),
+            cpAccordionCounter = document.createElement('span'),
             cpAccordionCollapse = document.createElement('div'),
             cpAccordionBody = document.createElement('div'),
             
             headerAttrs = {
                 id: 'heading' + e_ID + i,
                 class: 'accordion-header'
-            },
-            
+            },    
             btnAttrs = {
                 data_bs_toggle: 'collapse',
                 data_bs_target: '#collapse' + e_ID + i,
                 aria_expanded: 'true',
                 aria_controls: 'collapse' + e_ID + i
             },
-            
+            counterAttrs = {
+                id: 'cardPhaseCounter' + e_ID + i,
+                class: 'card-phase-counter'
+            }
             collapseAttrs = {
                 id: 'collapse' + e_ID + i,
                 aria_labeledby: 'heading' + e_ID + i,
                 data_bs_parent: '#ca_' + e_ID
             }, 
-            
             bodyAttrs = {
                 id: 'cpab_' + e_ID + i,
                 class: 'accordion-body'
@@ -535,14 +537,17 @@ buildCardAccordion = (e_ID, e_AccordionBody) => {
 
         setAttributes(cpAccordionHeader, headerAttrs);
         setAttributes(cpAccordionBtn, btnAttrs);
+        setAttributes(cpAccordionCounter, counterAttrs);
         setAttributes(cpAccordionCollapse, collapseAttrs);
         setAttributes(cpAccordionBody, bodyAttrs);
 
         cpAccordionItem.append(cpAccordionHeader, cpAccordionCollapse);
         cpAccordionHeader.appendChild(cpAccordionBtn);
         cpAccordionCollapse.appendChild(cpAccordionBody);
-
+        
+        cpAccordionCounter.innerHTML = 0;
         cpAccordionBtn.innerHTML = phase.name;
+        cpAccordionBtn.prepend(cpAccordionCounter);
         cpUL = document.createElement('ul');
         cpAccordionBody.appendChild(cpUL);
 
@@ -562,18 +567,25 @@ tieCardsToEmployee = () => {
             
         const e_ToDoListID = await 'cpab_'+e_ID+'0',
             e_ToDoList = document.getElementById(e_ToDoListID).querySelector('ul'),
+            e_ToDoCounter = document.getElementById('cardPhaseCounter'+e_ID+'0'),
             // e_DesignListID = 'cpab_'+e_ID+'0',
             // e_DesignList = document.getElementById(e_DesignListID).querySelector('ul'),
+            // e_DesignCounter = ,
             e_Phase1ListID = 'cpab_'+e_ID+'2',
             e_Phase1List = document.getElementById(e_Phase1ListID).querySelector('ul'),
+            e_Phase1Counter = document.getElementById('cardPhaseCounter'+e_ID+'2'),
             e_Phase2ListID = 'cpab_'+e_ID+'3',
             e_Phase2List = document.getElementById(e_Phase2ListID).querySelector('ul'),
+            e_Phase2Counter = document.getElementById('cardPhaseCounter'+e_ID+'3'),
             e_Phase3ListID = 'cpab_'+e_ID+'4',
             e_Phase3List = document.getElementById(e_Phase3ListID).querySelector('ul'),
+            e_Phase3Counter = document.getElementById('cardPhaseCounter'+e_ID+'4'),
             e_QAQCListID = 'cpab_'+e_ID+'5',
             e_QAQCList = document.getElementById(e_QAQCListID).querySelector('ul'),
+            e_QAQCCounter = document.getElementById('cardPhaseCounter'+e_ID+'5'),
             e_CompleteListID = 'cpab_'+e_ID+'6',
-            e_CompleteList = document.getElementById(e_CompleteListID).querySelector('ul');
+            e_CompleteList = document.getElementById(e_CompleteListID).querySelector('ul'),
+            e_CompleteCounter = document.getElementById('cardPhaseCounter'+e_ID+'6');
         
         let e_Cards = [];
 
@@ -593,7 +605,7 @@ tieCardsToEmployee = () => {
                 }
             })
         })
-
+        
         e_Cards.forEach(card => {
             const cardLI = document.createElement('li');
             
@@ -601,16 +613,22 @@ tieCardsToEmployee = () => {
 
             if(card.phase==='5ad3c6eb79d93844dc6b0b40') {
                 e_ToDoList.appendChild(cardLI);
+                e_ToDoCounter.innerHTML++;
             } else if(card.phase==='61f613024aa7d53bc468757b') {
                 e_Phase1List.appendChild(cardLI);
+                e_Phase1Counter.innerHTML++;
             } else if(card.phase==='61f61307219e3e3bda928af0') {
                 e_Phase2List.appendChild(cardLI);
+                e_Phase2Counter.innerHTML++;
             } else if(card.phase==='61f6130c6e9f198e257e8cb2') {
                 e_Phase3List.appendChild(cardLI);
+                e_Phase3Counter.innerHTML++;
             } else if(card.phase==='5ad3c6eb79d93844dc6b0b42') {
                 e_QAQCList.appendChild(cardLI);
+                e_QAQCCounter.innerHTML++;
             } else if(card.phase==='5ad3c6eb79d93844dc6b0b41') {
                 e_CompleteList.appendChild(cardLI);
+                e_CompleteCounter.innerHTML++;
             }
         })
     })
