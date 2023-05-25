@@ -635,7 +635,7 @@ h2.side-bar__section-header span {
 }
 #employeeBreakdownNav button.nav-link {
   transition: all 200ms ease-in-out;
-  background-color: rgba(215, 220, 225, 0.55);
+  background-color: rgba(240, 240, 240, 0.9);
   border: none;
   box-shadow: none;
   margin: 2px 0;
@@ -643,7 +643,7 @@ h2.side-bar__section-header span {
   text-align: left;
 }
 #employeeBreakdownNav button.nav-link:hover {
-  background-color: rgba(220, 225, 230, 0.95);
+  background-color: #f7f7f7;
   box-shadow: -3px 6px 6px rgba(0, 10, 20, 0.45);
   margin-left: 1px;
 }
@@ -731,6 +731,17 @@ h2.side-bar__section-header span {
 }
 #employeeBreakdown .accordion-button:focus {
   z-index: 1;
+}
+.card-phase-counter {
+  background-color: #ffffff;
+  border: 1px solid #222222;
+  border-radius: 7px;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  line-height: 28px;
+  margin-right: 10px;
+  text-align: center;
 }
 .e-name {
   transition: all 200ms ease-in-out;
