@@ -383,6 +383,7 @@ Trello.get('boards/QCJDklm5/cards', function(cards) {
     makePhaseChart();
     fillSprintChart();
     populateEmployeeBreakdownTabs();
+    checkForEmptyEmployeePhaseLists();
 }, function (error){
     console.log(error);
 });
@@ -549,6 +550,7 @@ buildCardAccordion = (e_ID, e_AccordionBody) => {
         cpAccordionBtn.innerHTML = phase.name;
         cpAccordionBtn.prepend(cpAccordionCounter);
         cpUL = document.createElement('ul');
+        cpUL.classList.add('employee-phase-list');
         cpAccordionBody.appendChild(cpUL);
 
         cardAccordion.appendChild(cpAccordionItem);
@@ -637,7 +639,7 @@ tieCardsToEmployee = () => {
 populateEmployeeBreakdownTabs = () => {
     const ebNav = document.getElementById('employeeBreakdownNav'),
     ebTabPanes = document.getElementById('employeeBreakdownTabPanes');
-
+    
     teamMembers.forEach((employee, i) => {
         const eName = employee.name,
         ePosition = employee.position,
@@ -645,7 +647,7 @@ populateEmployeeBreakdownTabs = () => {
         ePhone = employee.phone,
         eNavBtn = document.createElement('button'),
         eTabPane = document.createElement('div');
-
+        
         const btnAttrs = {
             class: 'nav-link',
             'data-bs-toggle': 'tab',
@@ -658,22 +660,33 @@ populateEmployeeBreakdownTabs = () => {
             class: 'tab-pane',
             role: 'tabpanel'
         };
-
+        
         setAttributes(eNavBtn, btnAttrs);
         setAttributes(eTabPane, paneAttrs);
-
+        
         eNavBtn.innerHTML = '<div class="e-name">'+
-                                eName+
-                                '</div><div class="e-info"><span>'+
-                                ePosition+
-                                '</span><a href="insert-company-internal-message-link-here"><i class="fa-solid fa-comments"></i></a><a href="mailto:'+
-                                eEmail+
-                                '"><i class="fa-regular fa-envelope"></i></a><a href="tel:'+
-                                ePhone+
-                                '"><i class="fa-solid fa-phone"></i></a></div>';
-
+        eName+
+        '</div><div class="e-info"><span>'+
+        ePosition+
+        '</span><a href="insert-company-internal-message-link-here"><i class="fa-solid fa-comments"></i></a><a href="mailto:'+
+        eEmail+
+        '"><i class="fa-regular fa-envelope"></i></a><a href="tel:'+
+        ePhone+
+        '"><i class="fa-solid fa-phone"></i></a></div>';
+        
         ebNav.appendChild(eNavBtn);
         ebTabPanes.appendChild(eTabPane);
     })
     tieCardsToEmployee();
+}
+
+checkForEmptyEmployeePhaseLists = () => {
+    const employeePhaseLists = document.querySelectorAll('.employee-phase-list');
+    console.log(employeePhaseLists);
+    employeePhaseLists.forEach(phaseList => {
+        console.log(phaseList);
+        if(phaseList.getElementsByTagName("li").length===0) {
+            phaseList.innerText = "This employee has no tasks in this phase at this time."
+        }
+    })
 }
