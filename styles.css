@@ -251,14 +251,21 @@ h2.side-bar__section-header span {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 52px;
+  font-size: 8vw;
   font-weight: 300;
   height: 120px;
   letter-spacing: 2px;
+  line-height: 1;
   margin: 0;
-  padding: 0 60px;
+  padding: 0 30px;
   text-transform: uppercase;
   text-shadow: 2px 3px #d8d8d8;
+}
+@media (min-width: 600px) {
+  .chart-container__title {
+    font-size: 52px;
+    padding: 0 60px;
+  }
 }
 .chart-container__title > span {
   display: block;
@@ -268,8 +275,14 @@ h2.side-bar__section-header span {
 .chart-container__content {
   border-top: 2px solid #ffffff;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   position: relative;
+}
+@media (min-width: 900px) {
+  .chart-container__content {
+    flex-direction: row;
+  }
 }
 @media (min-width: 1200px) {
   .chart-container__content {
@@ -303,7 +316,11 @@ h2.side-bar__section-header span {
 }
 .production-phase-chart__info {
   flex-grow: 1;
-  padding-right: 75px;
+}
+@media (min-width: 1200px) {
+  .production-phase-chart__info {
+    padding-right: 75px;
+  }
 }
 .production-phase-chart__list {
   border: 1px solid #d8d8d8;
@@ -382,8 +399,13 @@ h2.side-bar__section-header span {
 }
 .production-phase-chart__goal {
   transition: all 200ms ease-in-out;
-  font-size: 32px;
+  font-size: 4vw;
   line-height: 48px;
+}
+@media (min-width: 780px) {
+  .production-phase-chart__goal {
+    font-size: 32px;
+  }
 }
 #appContainer.side-bar-open .production-phase-chart__goal {
   font-size: 21px;
@@ -406,8 +428,14 @@ h2.side-bar__section-header span {
   background-color: rgba(252, 252, 252, 0.5);
   border: 1px solid rgba(252, 252, 252, 0.4);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  display: none!important;
   max-width: 800px;
   padding: 36px 17px 21px 28px;
+}
+@media (min-width: 440px) {
+  #productionPhaseChart {
+    display: block!important;
+  }
 }
 @media (min-width: 1400px) {
   #productionPhaseChart {
