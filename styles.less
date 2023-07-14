@@ -3,10 +3,10 @@
 @nav-bg: #0f293a;
 @pure-white: #ffffff;
 
-@scn-sm: 780px;
-@scn-md: 900px;
-@scn-lg: 1200px;
-@scn-xl: 1400px;
+@scrn-sm: 780px;
+@scrn-md: 900px;
+@scrn-lg: 1200px;
+@scrn-xl: 1400px;
 
 .global-transition { transition: all 200ms ease-in-out; }
 
@@ -111,7 +111,7 @@
 
 .side-bar.collapse {
     width: 6.4rem;
-    @media(min-width: @scn-sm) { width: 100px; }
+    @media(min-width: @scrn-sm) { width: 100px; }
     
     #logo {
         margin-left: 5px;
@@ -236,7 +236,7 @@ h2.side-bar__section-header {
     font-family: 'Prompt', sans-serif;
     font-weight: 200;
     transition: all 0.5s ease;;
-    @media(min-width: @scn-lg) {
+    @media(min-width: @scrn-lg) {
         margin-left: 300px;
         padding: 75px;
     }
@@ -244,12 +244,12 @@ h2.side-bar__section-header {
 
 #dashboardContainer.fullsize-dash {
     padding-left: 0;
-    @media(min-width: @scn-lg) { margin-left: 220px; }
+    @media(min-width: @scrn-lg) { margin-left: 220px; }
 }
 
 .chart-container {
     border: 2px solid @pure-white;
-    @media(min-width: @scn-lg) {
+    @media(min-width: @scrn-lg) {
         box-shadow: 0 1px 16px rgb(61 69 76 / 65%);
         margin: 65px 0;
     }
@@ -291,8 +291,8 @@ h2.side-bar__section-header {
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    @media(min-width: @scn-md) { flex-direction: row; }
-    @media(min-width: @scn-lg) { padding: 40px 60px; }
+    @media(min-width: @scrn-md) { flex-direction: row; }
+    @media(min-width: @scrn-lg) { padding: 40px 60px; }
 }
 
 .multi-chart-row {
@@ -329,7 +329,7 @@ h2.side-bar__section-header {
 
 .production-phase-chart__info {
     flex-grow: 1;
-    @media(min-width: @scn-lg) { padding-right: 75px; }
+    @media(min-width: @scrn-lg) { padding-right: 75px; }
 }
 
 .production-phase-chart__list {
@@ -340,7 +340,7 @@ h2.side-bar__section-header {
     min-width: 170px;
     padding: 0;
     text-shadow: 1px 1px #3e3e3e;
-    @media(min-width: @scn-xl) { min-width: 225px; }
+    @media(min-width: @scrn-xl) { min-width: 225px; }
     
     >li {
         border-bottom: 1px solid @light-gray;
@@ -408,7 +408,7 @@ h2.side-bar__section-header {
     .global-transition;
     font-size: 4vw;
     line-height: 48px;
-    @media(min-width: @scn-sm) { font-size: 32px;}
+    @media(min-width: @scrn-sm) { font-size: 32px;}
 }
 
 #appContainer.side-bar-open .production-phase-chart__goal {
@@ -439,7 +439,7 @@ h2.side-bar__section-header {
     max-width: 800px;
     padding: 36px 17px 21px 28px;
     @media(min-width: 440px) { display: block!important; } // override chart.js
-    @media(min-width: @scn-xl) {
+    @media(min-width: @scrn-xl) {
         max-height: 400px;
         max-width: 950px;
     }
@@ -599,7 +599,7 @@ h2.side-bar__section-header {
     .chart-container__title { background: linear-gradient(180deg, #dacaa9 0%, @pure-white); }
     
     .chart-container__content {
-        @media(min-width: @scn-lg) { padding: 60px; }
+        @media(min-width: @scrn-lg) { padding: 60px; }
     }
 
     .fa-spinner {
@@ -718,7 +718,7 @@ h2.side-bar__section-header {
         right: 0;
     width: 70%;
     z-index: 2;
-    @media(min-width: @scn-xl) { max-height: 770px; }
+    @media(min-width: @scrn-xl) { max-height: 770px; }
 }
 
 .employee-breakdown__start {
