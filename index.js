@@ -680,12 +680,10 @@ populateEmployeeBreakdownTabs = () => {
     tieCardsToEmployee();
 }
 
-checkForEmptyEmployeePhaseLists = () => {
-    const employeePhaseLists = document.querySelectorAll('.employee-phase-list');
-    console.log(employeePhaseLists);
+checkForEmptyEmployeePhaseLists = async () => {
+    const employeePhaseLists = await document.querySelectorAll('.employee-phase-list');
     employeePhaseLists.forEach(phaseList => {
-        console.log(phaseList);
-        if(phaseList.getElementsByTagName("li").length===0) {
+        if(phaseList.children.length<1) {
             phaseList.innerText = "This employee has no tasks in this phase at this time."
         }
     })
