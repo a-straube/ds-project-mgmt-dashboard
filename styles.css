@@ -741,7 +741,7 @@ h2.side-bar__section-header span {
   width: 100%;
 }
 #employeeBreakdown .accordion {
-  border: 1px solid #222222;
+  border: 1px solid #6d6d6d;
   border-radius: 0.25rem;
 }
 #employeeBreakdown .accordion-button {
